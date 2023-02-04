@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </Head>
       
 
-      <main className={`w-full h-[100vh] dark:bg-[#121212] bg-gray-100 `}>
+      <main className={`w-full h-full dark:bg-[#121212] bg-gray-100 `}>
         {/* HEADER */}
         <Header
           setSearch={setSearch}

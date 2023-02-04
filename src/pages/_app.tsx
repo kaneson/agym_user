@@ -8,7 +8,9 @@ import TransitionScreen from './TransitionScreen'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <HelmetProvider>
-      <Component {...pageProps} />
+      <div className='dark:bg-[#121212] h-[100vh]'>
+        <Component {...pageProps} />
+      </div>
     </HelmetProvider>
   )
 }
