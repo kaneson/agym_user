@@ -389,10 +389,15 @@ const Video:NextPage = () => {
       </Helmet>
 
       <div className='flex-1' >
-        <video className='w-full xl:h-[600px] sm:h-[500px] bg-[black]'>
-          <source>
-          </source>
-        </video>
+        <iframe 
+          className='w-full xl:h-[600px] sm:h-[500px] bg-[black]'
+          src='https://www.youtube.com/embed/E7wJTI-1dvQ'
+          //@ts-ignore
+          frameborder='0'
+          allow='autoplay; encrypted-media'
+          allowfullscreen
+          title='video'
+        />
       </div>
 
       <div className='grid xl:grid-cols-3 md:grid-cols-1 my-2 mx-[5%]' >
