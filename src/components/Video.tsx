@@ -35,8 +35,12 @@ const Video:React.FC<VideoProps> = ({
         />
       </Link>
       <div className="flex justify-around mt-2">
-        <img 
-          src={avatar} 
+        <Image 
+          src={{
+            src: `/${avatar}`,
+            width: 50,
+            height: 50
+          }} 
           alt=""
           className="rounded-full w-[11%] h-8" 
         />

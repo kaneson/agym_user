@@ -15,7 +15,19 @@ interface HeaderProps {
   setShow: (value: any) => any;
   setSearch: (value: string) => void;
 }
+
+interface LoaderImageProps {
+  src: string;
+  width: number;
+  quality: string;
+}
+
 const Header: React.FC<HeaderProps> = ({ setShow, setSearch }: HeaderProps) => {
+  
+  const myLoader = ({ src, width, quality }: LoaderImageProps) => {
+    return `https://${src}?w=${width}&q=${quality || 75}`
+  }
+
   return (
     <div className='flex justify-between items-center w-full h-10 px-6 py-8 bg-[#202020] text-white'>
       <div className='flex cursor-pointer'>
@@ -53,8 +65,12 @@ const Header: React.FC<HeaderProps> = ({ setShow, setSearch }: HeaderProps) => {
       <div className='flex justify-between h-32'>
         <ViewGridOutline className='h-6 cursor-pointer' />
         <DotsVerticalOutline className='h-6 cursor-pointer' />
-        <img
-          src="https://github.com/omanramalho42.png"
+        <Image
+          src={{
+            src: "/www.github.com/omanramalho42.png",
+            width: 50,
+            height: 50
+          }}
           alt=''
           width={50}
           height={50}

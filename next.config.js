@@ -7,6 +7,6 @@ const nextConfig = {
 module.exports = nextConfig;
 module.exports = {
   images: {
-    domains: ["yt3.ggpht.com", "https://github.com/omanramalho42.png"],
+    domains: ["res.cloudinary.com", "image/webp", "github.com"],
   }
 }

@@ -11,7 +11,13 @@ const SideVideosList:React.FC = () => {
   return (
     <>
       <Link href={"/video"} className="flex row h-[130px] hover:bg-gray-100 transition-all cursor-pointer">
-        <Image src={img} alt="img" width={200} height={50} className="rounded-lg mr-2" />
+        <Image 
+          src={img} 
+          alt="img" 
+          width={200} 
+          height={50} 
+          className="rounded-lg mr-2" 
+        />
         <div className='flex-col p-2'>
           <h1 className='font-md font-medium text-[#121212] mb-1'>
             Lorem ipsum dollar sign tittle video text

@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useEffect, useReducer, useState } from 'react'
+import React, { FC, useEffect, useReducer, useState } from 'react'
+
 import { NextPage } from 'next'
 
 import { 
@@ -14,6 +15,8 @@ import {
 
 import SideVideosList from '../components/SideVideosList'
 
+import Image from 'next/image'
+
 import { Helmet } from 'react-helmet'
 
 import { Header } from '../components'
@@ -22,8 +25,12 @@ const Comment:React.FC = () => {
   return (
     <div className='flex row space-x-2 mt-2'>
       <div>
-        <img 
-          src="http://github.com/omanramalho42.png" 
+        <Image 
+          src={{
+            src: "/www.github.com/omanramalho42.png",
+            width: 50,
+            height: 50
+          }} 
           alt="avatar" 
           width={40} 
           height={40} 
@@ -88,8 +95,12 @@ interface WidgetChannelInfoProps {
 const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscribers }: WidgetChannelInfoProps) => {
   return (
     <div className='flex row items-center'>
-      <img 
-        src="https://github.com/omanramalho42.png" 
+      <Image 
+        src={{
+          src: "/www.github.com/omanramalho42.png",
+          width: 50,
+          height: 50
+        }} 
         alt="avatar" 
         className='rounded-full cursor-pointer'
         width={40}
@@ -267,7 +278,17 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }: Widge
       </div>
 
       <div className='flex items-center space-x-3 my-5'>
-        <img src="http://github.com/omanramalho42.png" width={40} height={40} className="rounded-full" />
+        <Image 
+          src={{
+            src: "/www.github.com/omanramalho42.png",
+            width: 50,
+            height: 50
+          }}
+          alt="avatar"
+          width={40} 
+          height={40} 
+          className="rounded-full" 
+        />
         <form className='flex-col w-full space-y-2' action='/' method='post' onSubmit={() => {}}>
           <div className='flex border-b-2 rounded-sm'>
             <input 
@@ -359,7 +380,10 @@ const video:NextPage = () => {
   return (
     <div className='flex-col' >
       {/* //@ts-ignore */}
-      <Header setShow={() => {}} />
+      <Header 
+        setSearch={() => {}} 
+        setShow={() => {}} 
+      />
       
       <Helmet>
         <title>Video</title>
@@ -406,8 +430,6 @@ const video:NextPage = () => {
           ))}
         </div>
       </div>
-
-
     </div>
   )
 }
