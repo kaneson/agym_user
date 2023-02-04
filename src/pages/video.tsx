@@ -92,7 +92,7 @@ interface WidgetChannelInfoProps {
   subscribers: number;
 }
 
-const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscribers }: WidgetChannelInfoProps) => {
+const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscribers }) => {
   return (
     <div className='flex row items-center'>
       <Image 
@@ -132,6 +132,12 @@ const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscriber
   )
 }
 
+interface FilterActionProps {
+  title: 'Compartilhar' | 'Download' | 'Contribuir' | '...';
+  icon?: React.ReactNode;
+}
+
+
 const WidgetActionFilters:React.FC = () => {
   const initialState = {
     like: 0,
@@ -149,16 +155,12 @@ const WidgetActionFilters:React.FC = () => {
     }
   }
   const [likes, dispatch] = useReducer(reducer, initialState);
+  
   const handleLike = () => {
     dispatch({ type: 'LIKE' });
   }
   const handleDislike = () => {
     dispatch({ type: 'DESLIKE' });
-  }
-
-  interface FilterActionProps {
-    title: 'Compartilhar' | 'Download' | 'Contribuir' | '...';
-    icon?: React.ReactNode;
   }
 
   const filtersAction: FilterActionProps[] = [
@@ -167,8 +169,6 @@ const WidgetActionFilters:React.FC = () => {
     { title: 'Contribuir', icon: <ShareOutline className='mr-1 hover:scale-110 transition-all'/> },
     { title: '...' },
   ];
-
-  useEffect(() => { console.log(likes,'likes') },[likes])
 
   return (
     <div className='flex flex-wrap items-center row space-x-2 justify-start'>
@@ -217,7 +217,7 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
   views, 
   description, 
   date 
-}: WidgetContentDescriptionProps) => {
+}) => {
   const [formatterView, setFormatterView] = useState<string>("");
   const [showMoreInfo, setShowMoreInfo] = useState<boolean>(false);
 
@@ -235,7 +235,7 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
     if(description.length > 20) {
       setShowMoreInfo(true)
     }
-  },[])
+  },[description.length]);
 
   return (
     <div className='flex-col h-[auto] bg-gray-100 p-3 rounded-lg my-4'>
@@ -261,7 +261,7 @@ interface WidgetCommentAreaProps {
   onClick: (value: any) => any;
 }
 
-const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }: WidgetCommentAreaProps) => {
+const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
   const [comment, setComment] = useState<string>("");
   const [showComment, setShowComment] = useState<boolean>(false);
   
@@ -375,11 +375,10 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }: Widge
 
 const video:NextPage = () => {
   const [showCommentResponse, setShowCommentResponse] = useState(false);
-  const [title, setTile] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
+  const [title] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
 
   return (
     <div className='flex-col' >
-      {/* //@ts-ignore */}
       <Header 
         setSearch={() => {}} 
         setShow={() => {}} 

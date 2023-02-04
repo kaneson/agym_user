@@ -23,7 +23,7 @@ interface ContentProps {
 
 const Content:React.FC<ContentProps> = ({ search }) => {
 
-  const [videos, setVideos] = useState<VideoProps[]>([
+  const [videos] = useState<VideoProps[]>([
     { 
       title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officiis perferendis animi sed ',
       description: 'description video', channelName: '' , date: '4' , image: imageVideo , url: '/video', views: 10070, 

@@ -16,17 +16,7 @@ interface HeaderProps {
   setSearch: (value: string) => void;
 }
 
-interface LoaderImageProps {
-  src: string;
-  width: number;
-  quality: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ setShow, setSearch }: HeaderProps) => {
-  
-  const myLoader = ({ src, width, quality }: LoaderImageProps) => {
-    return `https://${src}?w=${width}&q=${quality || 75}`
-  }
+const Header: React.FC<HeaderProps> = ({ setShow, setSearch }) => {
 
   return (
     <div className='flex justify-between items-center w-full h-10 px-6 py-8 bg-[#202020] text-white'>
