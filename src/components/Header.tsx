@@ -19,7 +19,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ setShow, setSearch }) => {
 
   return (
-    <div className='flex justify-between items-center w-full h-10 px-6 py-8 bg-[#202020] text-white'>
+    <div className='flex flex-1 justify-between items-center w-full h-10 px-6 py-8 bg-[#202020] text-white'>
       <div className='flex cursor-pointer'>
         <MenuOutline 
           className='h-7 mr-4'
@@ -27,22 +27,22 @@ const Header: React.FC<HeaderProps> = ({ setShow, setSearch }) => {
             () => setShow((value:any) => !value)
           } 
         />
-        <Link href="/">
+        {/* <Link href="/">
           <h1 className='text-xl font-bold'>
             YouTube
           </h1>
-        </Link>
+        </Link> */}
       </div>
 
-      <div className='flex items-center'>
-        <form className='flex w-[600px] items-center bg-[#313131]'>
+      <div className='flex items-center w-full justify-center'>
+        <form className='flex xl-w-[600px] items-center rounded-l-full'>
           <input 
             type="text" 
             placeholder='Search' 
-            className='bg-black flex-1 h-10 placeholder:text-lg placeholder:relative placeholder:left-2' 
+            className='bg-black flex-1 h-10 placeholder:text-lg placeholder:relative placeholder:left-2 rounded-l-full z-10 cursor-pointer' 
             onChange={(event) => setSearch(event.target.value)}
           />
-          <button className='h-10 w-16 items-center justify-center flex'>
+          <button className='h-10 w-16 items-center p-2 bg-[#313131] rounded-r-full justify-center flex'>
             <SearchOutline className='h-5' />
           </button>
         </form>
