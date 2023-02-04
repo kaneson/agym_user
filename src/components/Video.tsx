@@ -5,34 +5,43 @@ import Link from 'next/link';
 
 import Skeleton from "react-loading-skeleton";
 
-import { VideoProps } from "./ContentVideos";
+import { ShelfVideoProps, VideoProps } from "./Content";
 
-const Video:React.FC<VideoProps> = ({ 
-  title, 
-  description, 
+const Video = ({ 
   views, 
-  date, 
-  channelName, 
-  image, 
+  title, 
   url, 
-  avatar 
-}: VideoProps) => {
+  author, 
+  bestThumbnail, 
+  id, 
+  duration, 
+  uploadedAt, 
+  badges, 
+  description, 
+  isLive, 
+  isUpcoming, 
+  thumbnails, 
+  type, 
+  upcoming 
+} : VideoProps) => {
   
   const [useLoading, setUseLoading] = useState(true);
   const [useViewsFormat, setUseViewsFormat] = useState("");
 
   useEffect(() => {
-    views > 1000 && views < 10000000 
-      ? setUseViewsFormat(`${Math.round(views/1000).toString()}k` )
-      : views > 10000000 
-      ? setUseViewsFormat(`${Math.round(views/10000000).toString}mil`) 
-      : setUseViewsFormat(views.toString())
+    if(views) {
+      views > 1000 && views < 10000000 
+        ? setUseViewsFormat(`${Math.round(views/1000).toString()}k` )
+        : views > 10000000 
+        ? setUseViewsFormat(`${Math.round(views/10000000).toString}mil`) 
+        : setUseViewsFormat(views.toString())
+    }
   },[views]);
 
   useEffect(() => {
     setTimeout(() => 
       setUseLoading(false), 
-      4000
+      2000
     );
   },[]);
 
@@ -50,32 +59,28 @@ const Video:React.FC<VideoProps> = ({
 
   return (
     <div className="bg-gray-200 rounded-lg w-[280px] mb-5 flex flex-col shadow-lg">
-      <Link href={url}>
+      <Link href={url || ""}>
         <Image 
           alt="thumbnail" 
-          src={image}
+          src={bestThumbnail}
           className="rounded-t-xl transition hover:scale-105 hover:rounded-lg mb-1 shadow-md" 
         />
       </Link>
       <div className="flex justify-around p-1 mt-2">
         <Image 
-          src={{
-            src: `/${avatar}`,
-            width: 50,
-            height: 50
-          }}
+          src={{ src: author.avatar.url, width: author.avatar.width, height: author.avatar.heigth }}
           alt="image"
           className="rounded-full w-[11%] h-8" 
         />
         <div className="w-[80%] flex-col text-sm font-bold">
           <h3 className="text-sm text-[#121212]">
-            { title }
+            { title || "" }
           </h3>
           <h3 className="text-[12px] text-gray-500">
-            { channelName }
+            { author?.name }
           </h3>
           <h3 className="flex text-[12px] text-gray-600">
-            { useViewsFormat }{' '} views - { date }hours
+            { useViewsFormat }{' '} views - { uploadedAt || "" }hours
           </h3>
         </div>
       </div>

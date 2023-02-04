@@ -21,6 +21,8 @@ import { Helmet } from 'react-helmet'
 
 import { Header } from '../components'
 
+import { motion } from 'framer-motion'
+
 const Comment:React.FC = () => {
   return (
     <div className='flex row space-x-2 mt-2'>
@@ -94,7 +96,12 @@ interface WidgetChannelInfoProps {
 
 const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscribers }) => {
   return (
-    <div className='flex row items-center'>
+    <motion.div 
+      className='flex row items-center'
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       <Image 
         src={{
           src: "/www.github.com/omanramalho42.png",
@@ -123,12 +130,15 @@ const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscriber
         } { '' } inscritos
         </p>
       </div>
-      <button className='flex py-3 ml-2 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all rounded-full text-center justify-center'>
+      <motion.button 
+        className='flex py-3 ml-2 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all rounded-full text-center justify-center'
+        variants={item}
+      >
         <p className='font-medium text-sm'>
           Inscrever-se
         </p>
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   )
 }
 
@@ -171,8 +181,16 @@ const WidgetActionFilters:React.FC = () => {
   ];
 
   return (
-    <div className='flex flex-wrap items-center row space-x-2 justify-start'>
-      <div className='flex rounded-full my-2 h-[auto] bg-gray-200'>
+    <motion.div 
+      className='flex flex-wrap items-center row space-x-2 justify-start'
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div 
+        className='flex rounded-full my-2 h-[auto] bg-gray-200'
+        variants={item} 
+      >
         <button 
           className='like flex justify-center items-center font-medium text-sm px-2 py-2 rounded-l-full text-center bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all'
           onClick={handleLike}
@@ -186,24 +204,33 @@ const WidgetActionFilters:React.FC = () => {
             : likes.like
           }
         </button>
+
         <div className='w-[1px] bg-gray-200 my-2 '/>
-        <button onClick={handleDislike} className='font-medium text-sm text-center px-2 rounded-r-full bg-gray-100 hover:bg-gray-200 transition-all active:bg-gray-300'>
+        
+        <button 
+          onClick={handleDislike}
+          className='font-medium text-sm text-center px-2 rounded-r-full bg-gray-100 hover:bg-gray-200 transition-all active:bg-gray-300'
+        >
           <TrashOutline className='mx-1 hover:scale-110 transition-all' />
         </button>
-      </div>
+      </motion.div>
 
-      {filtersAction.map((i, idx) => (
-        <div key={idx} className='flex justify-around px-3 my-2 rounded-full py-2 w-[auto] bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all'>
+      { filtersAction.map((i, idx) => (
+        <motion.div 
+          key={idx} 
+          className='flex justify-around px-3 my-2 rounded-full py-2 w-[auto] bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all'
+          variants={item}
+        >
           { i?.icon }
           <button className='flex items-center font-medium text-sm mr-1 text-center justify-between'>
             <p>
               { i.title }
             </p>
           </button>
-        </div>
+        </motion.div>
       ))}
 
-    </div>
+    </motion.div>
   )
 }
 
@@ -373,12 +400,37 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
   )
 }
 
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1
+  }
+};
+
 const Video:NextPage = () => {
   const [useShowCommentResponse, setUseShowCommentResponse] = useState(false);
   const [useTitle] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
 
   return (
-    <div className='flex-col' >
+    <motion.div 
+      className='flex-col' 
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       <Header 
         setSearch={() => {}} 
         setShow={() => {}} 
@@ -388,9 +440,13 @@ const Video:NextPage = () => {
         <title>Video</title>
       </Helmet>
 
-      <div className='flex-1' >
+      <motion.div 
+        className='flex-1' 
+        variants={item}
+      >
         <iframe 
           className='w-full xl:h-[600px] sm:h-[500px] bg-[black]'
+          style={{ minHeight: '400px' }}
           src='https://www.youtube.com/embed/E7wJTI-1dvQ'
           //@ts-ignore
           frameborder='0'
@@ -398,7 +454,7 @@ const Video:NextPage = () => {
           allowfullscreen
           title='video'
         />
-      </div>
+      </motion.div>
 
       <div className='grid xl:grid-cols-3 md:grid-cols-1 my-2 mx-[5%]' >
         {/* AREA CENTRAL COMENTARIOS E VIDEO */}
@@ -428,13 +484,20 @@ const Video:NextPage = () => {
         </div>
         
         {/* AREA LATERAL DIREITA VIDEOS DE REPRODUÇÃO */}
-        <div className='flex-col flex-1 space-y-2 my-5'>
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className='flex-col flex-1 space-y-2 my-5'
+        >
           {['1','2','3'].map((i) => (
-            <SideVideosList key={i} />
+            <motion.div key={i} variants={item}>
+              <SideVideosList />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

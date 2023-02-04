@@ -9,6 +9,7 @@ export default function Switcher() {
 	);
 
 	const toggleDarkMode = (checked: any) => {
+		//@ts-ignore
 		setTheme(colorTheme);
 		setDarkSide(checked);
 	};

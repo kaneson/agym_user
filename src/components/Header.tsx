@@ -15,6 +15,9 @@ import Link from 'next/link'
 
 import Switcher from './Switcher';
 
+import { motion } from 'framer-motion'
+import logo_svg from '../../public/images/logo_svg.svg';
+
 interface HeaderProps {
   setShow: (value: any) => any;
   setSearch: (value: string) => void;
@@ -25,30 +28,110 @@ const Header: React.FC<HeaderProps> = ({
   setSearch
 }) => {
 
+  const icon = {
+    hidden: {
+      pathLength: 0,
+      fill: "rgba(255, 255, 255, 0)"
+    },
+    visible: {
+      pathLength: 1,
+      fill: "rgba(255, 255, 255, 1)"
+    }
+  }
+
   return (
     <div className='flex flex-1 space-x-2 justify-between items-center w-full bg-gray-100 h-10 px-6 py-8'>
       <div className='mx-3 flex cursor-pointer items-center'>
-        <MenuOutline 
-          className='h-7 mr-4 color-[#121212]'
-          onClick={
-            () => setShow((value:any) => !value)
-          } 
-        />
-        <Link href="/">
-          <Image 
-            alt="logo" 
-            src={logo}
-            width={90}
-            height={50}
-            style={{ minWidth:100 }}
-            className="rounded-xl mx-4 transition hover:scale-105 mb-1" 
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            default: {
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01]
+            },
+            scale: {
+              type: "spring",
+              damping: 5,
+              stiffness: 100,
+              restDelta: 0.001
+            }
+          }}
+        >
+          <MenuOutline 
+            className='h-7 mr-4 color-[#121212]'
+            onClick={
+              () => setShow((value:any) => !value)
+            } 
           />
+        </motion.div>
+        <Link href="/" className='container'>
+          <motion.div
+            className="box rounded-xl mx-4 transition hover:scale-105 mb-1"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              default: {
+                duration: 0.3,
+                ease: [0, 0.71, 0.2, 1.01]
+              },
+              scale: {
+                type: "spring",
+                damping: 5,
+                stiffness: 100,
+                restDelta: 0.001
+              }
+            }}
+          >
+            <Image
+              alt="logo" 
+              src={logo}
+              width={90}
+              height={50}
+              style={{ minWidth:100 }}
+            />
+          </motion.div>
         </Link>
-        <Switcher />
+
+        <motion.div 
+          className='flex justify-center items-center relative top-1'
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            default: {
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01]
+            },
+            scale: {
+              type: "spring",
+              damping: 5,
+              stiffness: 100,
+              restDelta: 0.001
+            }
+          }}
+        >
+          <Switcher />
+        </motion.div>
       </div>
 
       <div className='flex items-center w-full justify-center'>
-        <form className='flex items-center justify-center rounded-l-full w-[50%]'>
+        <motion.form 
+          className='flex items-center justify-center rounded-l-full w-[50%]'
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            default: {
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01]
+            },
+            scale: {
+              type: "spring",
+              damping: 5,
+              stiffness: 100,
+              restDelta: 0.001
+            }
+          }}
+        >
           <input 
             type="text" 
             placeholder='Search' 
@@ -58,11 +141,27 @@ const Header: React.FC<HeaderProps> = ({
           <button className='h-10 w-16 items-center shadow-md p-2 bg-slate-200 border-l-2 border-gray-300 rounded-r-full justify-center flex'>
             <SearchOutline className='h-5' />
           </button>
-        </form>
+        </motion.form>
 
-        <button className="bg-gray-200 h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center">
+        <motion.button 
+          className="bg-gray-200 h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            default: {
+              duration: 0.3,
+              ease: [0, 0.71, 0.2, 1.01]
+            },
+            scale: {
+              type: "spring",
+              damping: 5,
+              stiffness: 100,
+              restDelta: 0.001
+            }
+          }}
+        >
           <MicrophoneOutline />
-        </button>
+        </motion.button>
       </div>
 
       <div className='flex justify-between h-32'>

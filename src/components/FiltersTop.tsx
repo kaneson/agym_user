@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react"
+
+import { motion } from "framer-motion";
 
 interface FilterTopProps {
   setFilter: (title: string) => void;
@@ -21,19 +23,45 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
     { title: 'Mobigap' },
   ];
 
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
-    <div className="flex-1 bg-gray-200 text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 py-4 px-6">
+    <motion.div 
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="flex-1 bg-gray-200 text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 py-4 px-6"
+    >
     {filtersTop.map(({ title }, idx) => (
-      <button 
+      <motion.button 
         key={idx}
+        variants={item}
         onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
       >
         <h3 className="bg-gray-300 color-[#121212] hover:bg-gray-400 cursor-pointer rounded-full text-center px-3 py-1 my-1 mx-1">
           { title }
         </h3>
-      </button>
+      </motion.button>
     ))}
-    </div>
+    </motion.div>
   )
 }
 

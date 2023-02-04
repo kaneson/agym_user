@@ -6,6 +6,7 @@ import Link from 'next/link'
 import img from '../../public/images/video.jpg'
 
 import { InformationCircleOutline } from 'heroicons-react'
+
 import Skeleton from 'react-loading-skeleton'
 
 const SideVideosList:React.FC = () => {
@@ -27,6 +28,7 @@ const SideVideosList:React.FC = () => {
       </div>
     )
   }
+
 
   return (
     <>
