@@ -236,7 +236,7 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
       setUseShowMoreInfo(true)
     }
   },[description.length]);
-
+  
   return (
     <div className='flex-col h-[auto] bg-gray-100 p-3 rounded-lg my-4'>
       <h4 className='font-medium'>

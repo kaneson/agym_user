@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,8 +6,28 @@ import Link from 'next/link'
 import img from '../../public/images/video.jpg'
 
 import { InformationCircleOutline } from 'heroicons-react'
+import Skeleton from 'react-loading-skeleton'
 
 const SideVideosList:React.FC = () => {
+  const [useLoading, setUseLaoding] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUseLaoding(false);
+    }, 4000);
+  },[]);
+  
+  if(useLoading) {
+    return (
+      <div className="flex row w-full">
+        <Skeleton width={200} height={150} className="rounded-full" />
+        <div className="flex-col my-2 mx-2">
+          <Skeleton count={3} width={200} height={15} />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <Link href={"/video"} className="flex row h-[130px] hover:bg-gray-100 transition-all cursor-pointer">

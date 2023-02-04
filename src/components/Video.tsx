@@ -1,6 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
+
 import Image from "next/image"
 import Link from 'next/link';
+
+import Skeleton from "react-loading-skeleton";
 
 import { VideoProps } from "./ContentVideos";
 
@@ -14,7 +17,7 @@ const Video:React.FC<VideoProps> = ({
   url, 
   avatar 
 }: VideoProps) => {
-
+  const [useLoading, setUseLoading] = useState(true);
   const [useViewsFormat, setUseViewsFormat] = useState("");
 
   useEffect(() => {
@@ -24,6 +27,25 @@ const Video:React.FC<VideoProps> = ({
       ? setUseViewsFormat(`${Math.round(views/10000000).toString}mil`) 
       : setUseViewsFormat(views.toString())
   },[views]);
+
+  useEffect(() => {
+    setTimeout(() => 
+      setUseLoading(false), 
+      4000
+    );
+  },[]);
+
+  if(useLoading) {
+    return (
+      <div className="flex-col w-full">
+        <Skeleton width={280} height={150} className="rounded-full" />
+        <div className="flex row my-2 space-x-2">
+          <Skeleton width={26} height={26} circle/>
+          <Skeleton count={3} width={200} height={15} />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-[#181818] w-[280px] mb-5 flex flex-col">

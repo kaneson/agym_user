@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import { Header, Main } from '../components'
 
 const Home: NextPage = () => {  
-  const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(false);
+  const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(true);
   const [search, setSearch] = useState<string>("");
   
   return (
