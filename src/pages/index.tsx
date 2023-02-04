@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         </Helmet>
       </Head>
 
-      <main style={{ height: '100vh', backgroundColor: '#181818' }}>
+      <main className='w-full' style={{ height: '100vh', backgroundColor: '#181818' }}>
         {/* HEADER */}
         <Header 
           setSearch={setSearch}
