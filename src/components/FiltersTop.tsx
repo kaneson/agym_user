@@ -11,8 +11,6 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
     { title: 'Todos' },
     { title: 'Fortalecimento Joelho' },
     { title: 'Fortalecimento Tornozelo e pé' },
-    { title: 'Respiração Pos Covid I' },
-    { title: 'Respiração Pos Covid II' },
     { title: 'Fortalecimento Ombro' },
     { title: 'Cardio Pós covid' },
     { title: 'Fortalecimento Mão' },
@@ -47,7 +45,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="flex-1 bg-gray-200 dark:bg-[#202020] text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
+      className="flex-1 w-full bg-gray-200 dark:bg-[#202020] text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
     >
     {filtersTop.map(({ title }, idx) => (
       <motion.button 
