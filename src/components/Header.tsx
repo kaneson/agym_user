@@ -28,14 +28,14 @@ const Header: React.FC<HeaderProps> = ({ setShow, setSearch }) => {
           } 
         />
         {/* <Link href="/">
-          <h1 className='text-xl font-bold'>
+          <h1 className='sm:visible text-xl font-bold'>
             YouTube
           </h1>
         </Link> */}
       </div>
 
       <div className='flex items-center w-full justify-center'>
-        <form className='flex xl-w-[600px] items-center rounded-l-full'>
+        <form className='flex flex-1 items-center rounded-l-full'>
           <input 
             type="text" 
             placeholder='Search' 

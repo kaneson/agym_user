@@ -22,7 +22,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
   ];
 
   return (
-    <div className="bg-[#202020] text-white text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-[#5F5F5F] py-4 px-6">
+    <div className="flex-1 bg-[#202020] text-white text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-[#5F5F5F] py-4 px-6">
     {filtersTop.map(({ title }, idx) => (
       <button 
         key={idx}
