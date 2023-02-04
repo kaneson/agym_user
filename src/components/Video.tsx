@@ -15,14 +15,14 @@ const Video:React.FC<VideoProps> = ({
   avatar 
 }: VideoProps) => {
 
-  const [viewsFormat, setViewsFormat] = useState("");
+  const [useViewsFormat, setUseViewsFormat] = useState("");
 
   useEffect(() => {
     views > 1000 && views < 10000000 
-      ? setViewsFormat(`${Math.round(views/1000).toString()}k` )
+      ? setUseViewsFormat(`${Math.round(views/1000).toString()}k` )
       : views > 10000000 
-      ? setViewsFormat(`${Math.round(views/10000000).toString}mil`) 
-      : setViewsFormat(views.toString())
+      ? setUseViewsFormat(`${Math.round(views/10000000).toString}mil`) 
+      : setUseViewsFormat(views.toString())
   },[views]);
 
   return (
@@ -52,7 +52,7 @@ const Video:React.FC<VideoProps> = ({
             { channelName }
           </h3>
           <h3 className="flex text-[12px] text-gray-400">
-            { viewsFormat }{' '} views - { date }hours
+            { useViewsFormat }{' '} views - { date }hours
           </h3>
         </div>
       </div>

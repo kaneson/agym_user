@@ -36,17 +36,17 @@ const Content:React.FC<ContentProps> = ({ search }) => {
     { title: 'Lorem ipsum dolor sit Music amet Typesctypt adipisicing elit. Quos officiis perferendis animi sed ', description: 'description video', channelName: '' , date: '4' , image: imageVideo , url: '/video', views: 10, avatar: 'http://github.com/omanramalho42.png' },
     { title: 'Lorem ipsum dolor sit amet Music adipisicing elit. Quos officiis perferendis animi sed ', description: 'description video', channelName: '' , date: '4' , image: imageVideo , url: '/video', views: 10, avatar: 'http://github.com/omanramalho42.png' },
   ]);
-  const [filterVideo, setFilterVideos] = useState("");
+  const [useFilterVideo, setUseFilterVideos] = useState("");
 
   return (
     <div className='w-[94%]'>
       <FiltersTop 
-        setFilter={setFilterVideos} 
+        setFilter={setUseFilterVideos} 
       />
       
       <ContentVideos 
         videos={videos} 
-        filter={filterVideo}
+        filter={useFilterVideo}
         search={search}
       />
     </div>

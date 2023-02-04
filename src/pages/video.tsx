@@ -218,34 +218,34 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
   description, 
   date 
 }) => {
-  const [formatterView, setFormatterView] = useState<string>("");
-  const [showMoreInfo, setShowMoreInfo] = useState<boolean>(false);
+  const [useFormatterView, setUseFormatterView] = useState<string>("");
+  const [useShowMoreInfo, setUseShowMoreInfo] = useState<boolean>(false);
 
   useEffect(() => {
     if(views > 1000 && views < 1000000) {
-      setFormatterView(`${Math.round(views/1000).toString()} mil}`)
+      setUseFormatterView(`${Math.round(views/1000).toString()} mil}`)
     } else if (views >= 10000000) {
-      setFormatterView(`${Math.round(views/10000000).toString()} milhões}`)
+      setUseFormatterView(`${Math.round(views/10000000).toString()} milhões}`)
     } else {
-      setFormatterView(views.toString())
+      setUseFormatterView(views.toString())
     }
   },[views]);
 
   useEffect(() => {
     if(description.length > 20) {
-      setShowMoreInfo(true)
+      setUseShowMoreInfo(true)
     }
   },[description.length]);
 
   return (
     <div className='flex-col h-[auto] bg-gray-100 p-3 rounded-lg my-4'>
       <h4 className='font-medium'>
-        {  formatterView } {' '} visualizações há { date } horas
+        {  useFormatterView } {' '} visualizações há { date } horas
       </h4>
       <p className='text-md mb-5'>
         { description.length > 80 ? description.slice(0,80).concat("...") : description  }
       </p>
-      { showMoreInfo && (
+      { useShowMoreInfo && (
         <button>
           <span className='font-medium cursor-pointer'>
             Mostrar mais...
@@ -262,8 +262,8 @@ interface WidgetCommentAreaProps {
 }
 
 const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
-  const [comment, setComment] = useState<string>("");
-  const [showComment, setShowComment] = useState<boolean>(false);
+  const [useComment, setUseComment] = useState<string>("");
+  const [useShowComment, setUseShowComment] = useState<boolean>(false);
   
   return (
     <>
@@ -293,18 +293,18 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
           <div className='flex border-b-2 rounded-sm'>
             <input 
               onClick={
-                () => setShowComment((value) => !value)
+                () => setUseShowComment((value) => !value)
               }
               type="text" 
               placeholder='Adicionar comentario' 
               className='w-full'
               style={{ all: 'unset', width: '100%' }}
               onChange={
-                (event) => setComment(event.target.value)
+                (event) => setUseComment(event.target.value)
               } 
             />
           </div>
-            {showComment && (
+            {useShowComment && (
               <div className='flex w-full transition-all row justify-between items-center'>
                 <EmojiHappy size={24} />
                 <div className='flex row space-x-4'>
@@ -312,8 +312,8 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
                     type='button'
                     className='py-2 px-4 rounded-lg' 
                     onClick={() => {
-                      setComment("")
-                      setShowComment(() => false)
+                      setUseComment("")
+                      setUseShowComment(() => false)
                     }}
                   >
                     <p className='font-medium text-black text-md'>
@@ -337,7 +337,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
       </div>
 
       {/* Comments */}
-      {comment ? (
+      {useComment ? (
         <>
           <Comment />
 
@@ -373,9 +373,9 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
   )
 }
 
-const video:NextPage = () => {
-  const [showCommentResponse, setShowCommentResponse] = useState(false);
-  const [title] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
+const Video:NextPage = () => {
+  const [useShowCommentResponse, setUseShowCommentResponse] = useState(false);
+  const [useTitle] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
 
   return (
     <div className='flex-col' >
@@ -399,7 +399,7 @@ const video:NextPage = () => {
         {/* AREA CENTRAL COMENTARIOS E VIDEO */}
         <div className='col px-4 lg:col-span-2'>  
           <h3 className='xl:text-3xl sm:text-2xl font-medium mb-5'>
-            { title }
+            { useTitle }
           </h3>
 
           <div className='flex flex-wrap row justify-between space-x-2'>       
@@ -417,8 +417,8 @@ const video:NextPage = () => {
           />
 
           <WidgetCommentArea 
-            value={showCommentResponse} 
-            onClick={setShowCommentResponse} 
+            value={useShowCommentResponse} 
+            onClick={setUseShowCommentResponse} 
           />
         </div>
         
@@ -433,4 +433,4 @@ const video:NextPage = () => {
   )
 }
 
-export default video
+export default Video
