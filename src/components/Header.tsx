@@ -16,7 +16,6 @@ import Link from 'next/link'
 import Switcher from './Switcher';
 
 import { motion } from 'framer-motion'
-import logo_svg from '../../public/images/logo_svg.svg';
 
 interface HeaderProps {
   setShow: (value: any) => any;
@@ -86,9 +85,9 @@ const Header: React.FC<HeaderProps> = ({
             <Image
               alt="logo" 
               src={logo}
-              width={90}
-              height={50}
-              style={{ minWidth:100 }}
+              width={135}
+              height={70}
+              style={{ minWidth:50 }}
             />
           </motion.div>
         </Link>
