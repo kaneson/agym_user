@@ -32,7 +32,7 @@ const SideVideosList:React.FC = () => {
 
   return (
     <>
-      <Link href={"/video"} className="flex row h-[130px] hover:bg-gray-100 transition-all cursor-pointer">
+      <Link href={"/video"} className="flex row h-[130px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer">
         <Image 
           src={img} 
           alt="img" 
@@ -41,7 +41,7 @@ const SideVideosList:React.FC = () => {
           className="rounded-lg mr-2" 
         />
         <div className='flex-col p-2'>
-          <h1 className='font-md font-medium text-[#121212] mb-1'>
+          <h1 className='font-md font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>
             Lorem ipsum dollar sign tittle video text
           </h1>
           <div className='flex row items-center space-x-2'>
@@ -50,11 +50,11 @@ const SideVideosList:React.FC = () => {
             </p>
             <InformationCircleOutline size={12} />
           </div>
-          <p className='font-ligth text-sm'>
+          <p className='font-ligth text-sm dark:text-gray-100'>
             27 mil visualizaçoes . há 23 horas
           </p>
-          <div className='flex items-center justify-center w-[60px] bg-gray-300 p-1 rounded-xl'>
-            <span className='text-center xl:text-[12px] sm:text-[10x] font-medium text-[#121212] '>
+          <div className='flex items-center justify-center w-[60px] bg-gray-300 dark:bg-[#252525] p-1 rounded-xl'>
+            <span className='text-center xl:text-[12px] sm:text-[10x] font-medium text-[#121212] dark:text-[#F9F9F9]'>
               Novo!
             </span>
           </div>

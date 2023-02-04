@@ -48,7 +48,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="flex-1 bg-gray-200 text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 py-4 px-6"
+      className="flex-1 bg-gray-200 dark:bg-[#202020] text-sm flex flex-wrap justify-between border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
     >
     {filtersTop.map(({ title }, idx) => (
       <motion.button 
@@ -56,7 +56,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
         variants={item}
         onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
       >
-        <h3 className="bg-gray-300 color-[#121212] hover:bg-gray-400 cursor-pointer rounded-full text-center px-3 py-1 my-1 mx-1">
+        <h3 className="bg-gray-300 dark:bg-[#606060] text-[#121212] dark:text-[#F9F9F9] hover:bg-gray-400 cursor-pointer rounded-full text-center px-3 py-1 my-1 mx-1">
           { title }
         </h3>
       </motion.button>

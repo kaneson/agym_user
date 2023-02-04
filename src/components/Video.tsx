@@ -58,7 +58,7 @@ const Video = ({
   }
 
   return (
-    <div className="bg-gray-200 rounded-lg w-[280px] mb-5 flex flex-col shadow-lg">
+    <div className="bg-gray-200 dark:bg-[#202020] rounded-lg w-[280px] mb-5 flex flex-col shadow-lg">
       <Link href={url || ""}>
         <Image 
           alt="thumbnail" 
@@ -73,7 +73,7 @@ const Video = ({
           className="rounded-full w-[11%] h-8" 
         />
         <div className="w-[80%] flex-col text-sm font-bold">
-          <h3 className="text-sm text-[#121212]">
+          <h3 className="text-sm text-[#121212] dark:text-[#F9F9F9]">
             { title || "" }
           </h3>
           <h3 className="text-[12px] text-gray-500">

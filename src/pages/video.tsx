@@ -41,7 +41,7 @@ const Comment:React.FC = () => {
       </div>
       <div className='flex-col mt-3'>
         <div className='flex w-full justify-between items-center'>
-          <div className='flex row justify-start items-center space-x-2 mb-2'>
+          <div className='flex row justify-start dark:text-white items-center space-x-2 mb-2'>
             <IdentificationOutline size={12} />
             <p className='text-sm font-light'>
               fixado por oman ramalho
@@ -49,38 +49,38 @@ const Comment:React.FC = () => {
           </div>
           
           <button 
-            className='relative rounded-full p-2 text-sm text-center hover:bg-gray-200'
+            className='relative rounded-full p-2 text-sm text-center hover:bg-gray-200 dark:hover:bg-[#202020]'
           >
             ...
           </button>
         </div>
         <div className='flex row items-center space-x-2'>
-          <button className='flex row justify-between space-x-1 items-center bg-gray-100 py-1 px-2 rounded-full'>
-            <p className='text-sm font-medium'>
+          <button className='flex row justify-between space-x-1 items-center bg-gray-100 dark:bg-[#303030] py-1 px-2 rounded-full'>
+            <p className='text-sm font-medium dark:text-white'>
               Oman plus
             </p>
             <IdentificationOutline size={14} />
           </button>
-          <p className='text-sm font-light'>
+          <p className='text-sm font-light dark:text-white'>
             Há 3 horas
           </p>
         </div>
-        <p className='text-md mb-4'>
+        <p className='text-md mb-4 dark:text-white'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque sint ratione.
         </p>
         <div className='flex row items-center space-x-3 mt-2'>
-          <button className='flex items-center space-x-1'>
+          <button className='flex items-center space-x-1 dark:text-white'>
             <HeartOutline size={14} /> 
             <p className='font-medium text-sm'>
               18
             </p>
           </button>
 
-          <button className='flex items-center'>
+          <button className='flex items-center dark:text-white'>
             <TrashOutline size={14} />
           </button>
 
-          <p className='font-medium text-sm'>
+          <p className='font-medium text-sm dark:text-white'>
             Responder
           </p>
         </div>
@@ -131,7 +131,7 @@ const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscriber
         </p>
       </div>
       <motion.button 
-        className='flex py-3 ml-2 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all rounded-full text-center justify-center'
+        className='flex py-3 ml-2 px-4 bg-gray-100 dark:bg-[#202020] dark:hover:bg-[#404040] hover:bg-gray-200 active:bg-gray-300 transition-all rounded-full text-center justify-center'
         variants={item}
       >
         <p className='font-medium text-sm'>
@@ -188,11 +188,11 @@ const WidgetActionFilters:React.FC = () => {
       animate="visible"
     >
       <motion.div 
-        className='flex rounded-full my-2 h-[auto] bg-gray-200'
+        className='flex rounded-full my-2 h-[auto] bg-gray-200 dark:bg-gray-900'
         variants={item} 
       >
         <button 
-          className='like flex justify-center items-center font-medium text-sm px-2 py-2 rounded-l-full text-center bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all'
+          className='like flex justify-center items-center font-medium text-sm px-2 py-2 rounded-l-full text-center bg-gray-100 dark:hover:bg-[#404040] dark:bg-[#202020] hover:bg-gray-200 active:bg-gray-300 transition-all'
           onClick={handleLike}
         >
           <HeartOutline className='mr-1 hover:scale-110 transition-all' /> 
@@ -209,7 +209,7 @@ const WidgetActionFilters:React.FC = () => {
         
         <button 
           onClick={handleDislike}
-          className='font-medium text-sm text-center px-2 rounded-r-full bg-gray-100 hover:bg-gray-200 transition-all active:bg-gray-300'
+          className='font-medium text-sm text-center px-2 rounded-r-full bg-gray-100 dark:bg-[#202020] hover:bg-gray-200  dark:hover:bg-[#404040] transition-all active:bg-gray-300'
         >
           <TrashOutline className='mx-1 hover:scale-110 transition-all' />
         </button>
@@ -218,7 +218,7 @@ const WidgetActionFilters:React.FC = () => {
       { filtersAction.map((i, idx) => (
         <motion.div 
           key={idx} 
-          className='flex justify-around px-3 my-2 rounded-full py-2 w-[auto] bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-all'
+          className='flex justify-around px-3 my-2 rounded-full py-2 w-[auto] bg-gray-100 dark:bg-[#202020] hover:bg-gray-200 dark:hover:bg-[#404040] active:bg-gray-300 transition-all'
           variants={item}
         >
           { i?.icon }
@@ -265,16 +265,16 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
   },[description.length]);
   
   return (
-    <div className='flex-col h-[auto] bg-gray-100 p-3 rounded-lg my-4'>
-      <h4 className='font-medium'>
+    <div className='flex-col h-[auto] bg-gray-100 dark:bg-[#121212] p-3 rounded-lg my-4'>
+      <h4 className='font-medium dark:text-white'>
         {  useFormatterView } {' '} visualizações há { date } horas
       </h4>
-      <p className='text-md mb-5'>
+      <p className='text-md mb-5 dark:text-white'>
         { description.length > 80 ? description.slice(0,80).concat("...") : description  }
       </p>
       { useShowMoreInfo && (
         <button>
-          <span className='font-medium cursor-pointer'>
+          <span className='font-medium cursor-pointer dark:text-white'>
             Mostrar mais...
           </span>
         </button>
@@ -295,12 +295,12 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
   return (
     <>
       <div className='flex row items-center justify-start space-x-5 my-5'>
-        <h5 className='text-lg'>
+        <h5 className='text-lg dark:text-white'>
           621 comentarios
         </h5>
         <div className='flex items-center font-medium cursor-pointer'>
           <FilterOutline />
-          <p>Ordenar por</p>
+          <p className='dark:text-white'>Ordenar por</p>
         </div>
       </div>
 
@@ -324,7 +324,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
               }
               type="text" 
               placeholder='Adicionar comentario' 
-              className='w-full'
+              className='w-full dark:placeholder:text-white'
               style={{ all: 'unset', width: '100%' }}
               onChange={
                 (event) => setUseComment(event.target.value)
@@ -333,7 +333,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
           </div>
             {useShowComment && (
               <div className='flex w-full transition-all row justify-between items-center'>
-                <EmojiHappy size={24} />
+                <EmojiHappy size={24} className="dark:text-[#FFF]" />
                 <div className='flex row space-x-4'>
                   <button 
                     type='button'
@@ -343,16 +343,16 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
                       setUseShowComment(() => false)
                     }}
                   >
-                    <p className='font-medium text-black text-md'>
+                    <p className='font-medium text-black dark:text-white text-md'>
                       Cancelar
                     </p>
                   </button>
                   <button 
-                    className='bg-gray-200 py-2 px-4 rounded-lg' 
+                    className='bg-gray-200 dark:bg-[#202020] py-2 px-4 rounded-lg' 
                     type='submit'
                   >
                     <p 
-                      className='font-medium text-black text-md'
+                      className='font-medium text-black text-md dark:text-white'
                     >
                       Comentar
                     </p>
@@ -373,7 +373,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
               onClick={
                 () => onClick((value: any) => !value)
               } 
-              className='flex items-center text-slate-700 hover:bg-slate-700 hover:text-white transition-all rounded-full p-2'>
+              className='flex items-center text-slate-700 hover:bg-[#505050] dark:hover:bg-[#202020] hover:text-white dark:text-white transition-all rounded-full p-2'>
               { value ? (
                 <ArrowDownOutline size={12} className="mr-1" />
               ) : (
@@ -391,7 +391,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
         </>
       ) : (
         <div className='flex justify-center'>
-          <p className='font-light text-sm'>
+          <p className='font-light text-sm dark:text-white'>
             Seja o primeiro a comentar
           </p>
         </div>
@@ -426,7 +426,7 @@ const Video:NextPage = () => {
 
   return (
     <motion.div 
-      className='flex-col' 
+      className='flex-col dark:bg-[#121212]' 
       variants={container}
       initial="hidden"
       animate="visible"
@@ -459,11 +459,11 @@ const Video:NextPage = () => {
       <div className='grid xl:grid-cols-3 md:grid-cols-1 my-2 mx-[5%]' >
         {/* AREA CENTRAL COMENTARIOS E VIDEO */}
         <div className='col px-4 lg:col-span-2'>  
-          <h3 className='xl:text-3xl sm:text-2xl font-medium mb-5'>
+          <h3 className='xl:text-3xl sm:text-2xl font-medium mb-5 dark:text-white'>
             { useTitle }
           </h3>
 
-          <div className='flex flex-wrap row justify-between space-x-2'>       
+          <div className='flex flex-wrap row justify-between space-x-2 dark:text-white'>       
             <WidgetChannelInfo 
               channelName='Channel name' 
               subscribers={80} 

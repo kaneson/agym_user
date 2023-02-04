@@ -51,7 +51,7 @@ const Sidebar:React.FC = () => {
       initial="hidden"
       animate="visible"
       style={{ minWidth: '80px' }} 
-      className='w-[5%] h-[auto] flex flex-col items-center bg-gray-200 text-[#121212] transition-all'
+      className='w-[5%] h-[auto] flex flex-col items-center bg-gray-200 dark:bg-[#202020] text-[#121212] dark:text-[#F9F9F9] transition-all'
     >
       {sidebarItems.map(({ icon, title }, idx) => (
         <motion.div 
