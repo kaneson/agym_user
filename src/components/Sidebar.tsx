@@ -25,9 +25,9 @@ const Sidebar:React.FC = () => {
   ]
 
   return (
-    <div style={{ minWidth: '80px' }} className='w-[5%] h-[auto] flex flex-col bg-[#202020] items-center text-white transition-all'>
+    <div style={{ minWidth: '80px' }} className='w-[5%] h-[auto] flex flex-col items-center bg-gray-200 text-[#121212] transition-all'>
       {sidebarItems.map(({ icon, title }, idx) => (
-        <div key={idx} className='flex flex-col justify-center cursor-pointer items-center hover:bg-gray-600 w-full h-20 mt-2'>
+        <div key={idx} className='flex flex-col justify-center cursor-pointer items-center transition-all hover:bg-gray-300 w-full h-20'>
           { icon }
           <h4 className='text-[10px]'>
             { title }

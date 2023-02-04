@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Video from "./Video";
 
@@ -25,7 +25,7 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
 
   return (
     <div 
-      className="grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap overflow-y-auto bg-[#181818] py-4 px-6"
+      className="grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap overflow-y-auto bg-gray-100 py-4 px-6"
     >
       {(
         videos.map(({ channelName, date, description, image, title, url, views, avatar }, idx) => 
