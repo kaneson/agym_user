@@ -9,18 +9,17 @@ interface FilterTopProps {
 const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
   const filtersTop = [
     { title: 'Todos' },
-    { title: 'Javascript' },
-    { title: 'Fitness' },
-    { title: 'Music' },
-    { title: 'Html' },
-    { title: 'Css' },
-    { title: 'Typescript' },
-    { title: 'Universal Code' },
-    { title: 'Sanity' },
-    { title: 'FullStack' },
-    { title: 'React' },
-    { title: 'Next' },
-    { title: 'Mobigap' },
+    { title: 'Fortalecimento Joelho' },
+    { title: 'Fortalecimento Tornozelo e pé' },
+    { title: 'Respiração Pos Covid I' },
+    { title: 'Respiração Pos Covid II' },
+    { title: 'Fortalecimento Ombro' },
+    { title: 'Cardio Pós covid' },
+    { title: 'Fortalecimento Mão' },
+    { title: 'Agachamento Livre' },
+    { title: 'Equilibrio' },
+    { title: 'Inferiores' },
+    { title: 'Superiores' },
   ];
 
   const container = {
