@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { lazy, useState } from 'react'
 
-import ContentVideos from './ContentVideos'
+const ContentVideos = lazy(() => import('./ContentVideos'));
 import FiltersTop from './FiltersTop'
 
 import imageVideo from '../../public/images/video.jpg'

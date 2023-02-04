@@ -40,8 +40,8 @@ const Video:React.FC<VideoProps> = ({
             src: `/${avatar}`,
             width: 50,
             height: 50
-          }} 
-          alt=""
+          }}
+          alt="image"
           className="rounded-full w-[11%] h-8" 
         />
         <div className="w-[80%] flex-col text-sm font-bold">
