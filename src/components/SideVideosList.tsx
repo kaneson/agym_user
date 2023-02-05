@@ -35,7 +35,10 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
 
   return (
     <>
-      <Link href={`/video/${video.videoId}?channelId=${video.channelId}`} className="flex row h-[130px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer">
+      <Link 
+        href={`/video/${video.videoId}?channelId=${video.channelId}`}
+        className="flex row h-[160px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer"
+      >
         <Image 
           src={{
             src: video.thumbnails.default.url,
@@ -48,23 +51,23 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
           className="rounded-lg mr-2" 
         />
         <div className='flex-col p-2'>
-          <h1 className='font-md font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>
+          <h1 className='md:text-lg lg:text-sm text-sm font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>
             { video.title }
           </h1>
           <div className='flex row items-center space-x-2'>
-            <p className='text-sm font-medium text-gray-400'>
-              { video.channelTitle }
+            <p className='text-sm font-medium text-gray-400 md:text-lg lg:text-sm'>
+              video.channelTitle
             </p>
-            <InformationCircleOutline size={12} />
+            <InformationCircleOutline size={12} className="dark:text-[#fff]" />
           </div>
-          <p className='font-ligth text-sm dark:text-gray-100'>
+          <p className='font-ligth text-sm dark:text-gray-100 md:text-lg lg:text-sm'>
             27 mil visualizaçoes . há 23 horas
           </p>
-          <div className='flex items-center justify-center w-[60px] bg-gray-300 dark:bg-[#252525] p-1 rounded-xl'>
-            <span className='text-center xl:text-[12px] sm:text-[10x] font-medium text-[#121212] dark:text-[#F9F9F9]'>
+          {/* <div className='flex items-center justify-center w-[60px] bg-gray-300 dark:bg-[#252525] lg:p-1 rounded-xl'>
+            <span className='text-center md:text-lg lg:text-[10px] font-medium text-[#121212] dark:text-[#F9F9F9]'>
               Novo!
             </span>
-          </div>
+          </div> */}
         </div>
       </Link>
     </>
