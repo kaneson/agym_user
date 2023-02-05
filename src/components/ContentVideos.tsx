@@ -44,7 +44,7 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
         variants={container}
         initial="hidden"
         animate="visible"
-        className="container grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap bg-gray-100 dark:bg-[#121212]"
+        className="container grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap bg-transparent"
       >
         {(
           videos.map(({ 

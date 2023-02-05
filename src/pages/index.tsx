@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 import { Header, Main } from '../components'
-// import useDarkSide from '../hooks/useDarkSide'
 
 const Home: NextPage = () => {  
-  const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(true);
+  const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+ 
   return (
     <div>
       <Head>
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       </Head>
       
 
-      <main className={`dark:bg-[#121212] bg-gray-100 `}>
+      <main className={`dark:bg-[#121212] bg-[#F8F9FC] `}>
         {/* HEADER */}
         <Header
           setSearch={setSearch}

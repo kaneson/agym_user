@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <div className='flex flex-1 space-x-2 justify-between items-center w-full bg-gray-100 dark:bg-[#121212] h-10 px-6 py-8'>
+    <div className='flex flex-1 space-x-2 justify-between items-center w-full bg-[#643ADC] h-10 px-6 py-8'>
       <div className='mx-3 flex cursor-pointer items-center'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -134,16 +134,16 @@ const Header: React.FC<HeaderProps> = ({
           <input 
             type="text" 
             placeholder='Search' 
-            className='flex w-full shadow-md p-3 bg-slate-200 dark:bg-[#606060] h-10 placeholder:text-lg dark:placeholder:text-white placeholder:relative placeholder:left-2 rounded-l-full z-10 cursor-pointer' 
+            className='flex w-full shadow-md p-3 bg-[#ebedf3] dark:bg-[#404040] h-10 placeholder:text-lg dark:placeholder:text-white placeholder:relative placeholder:left-2 rounded-l-full z-10 cursor-pointer' 
             onChange={(event) => setSearch(event.target.value)}
           />
-          <button className='h-10 w-16 items-center shadow-md p-2 bg-slate-200 dark:bg-[#606060] dark:text-white border-l-2 border-gray-300 dark:border-gray-900 rounded-r-full justify-center flex'>
+          <button className='h-10 w-16 items-center shadow-md p-2 bg-[#ebedf3] dark:bg-[#404040] dark:text-white border-l-2 border-gray-300 dark:border-gray-900 rounded-r-full justify-center flex'>
             <SearchOutline className='h-5' />
           </button>
         </motion.form>
 
         <motion.button 
-          className="bg-gray-200 dark:bg-[#606060] dark:text-white h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center"
+          className="bg-[#ebedf3] dark:bg-[#404040] dark:text-white h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{

@@ -9,6 +9,7 @@ import {
 } from 'heroicons-react';
 
 import { motion } from'framer-motion';
+import Link from 'next/link';
 
 const Sidebar:React.FC = () => {
   interface SideBarProps {
@@ -51,19 +52,21 @@ const Sidebar:React.FC = () => {
       initial="hidden"
       animate="visible"
       style={{ minWidth: '80px' }} 
-      className='w-[5%] h-[100vh] flex flex-col items-center bg-gray-200 dark:bg-[#202020] text-[#121212] dark:text-[#F9F9F9] transition-all'
+      className='w-[5%] h-[100vh] flex flex-col items-center bg-[#643ADC] text-[#d9d9d9] dark:text-[#f9f9f9] transition-all'
     >
       {sidebarItems.map(({ icon, title }, idx) => (
-        <motion.div 
-          key={idx}
-          variants={item}
-          className='flex flex-col justify-center cursor-pointer items-center transition-all hover:bg-gray-300 w-full h-20'
-        >
-          { icon }
-          <h4 className='text-[10px]'>
-            { title }
-          </h4>
-        </motion.div>
+        // <Link href={`/${title}`}>
+          <motion.div 
+            key={idx}
+            variants={item}
+            className='flex flex-col justify-center cursor-pointer items-center transition-all hover:bg-[#8e3adc] hover:text-white w-full h-20'
+          >
+            { icon }
+            <h4 className='text-[10px]'>
+              { title }
+            </h4>
+          </motion.div>
+        // </Link>
       ))}
     </motion.div>
   )

@@ -48,9 +48,13 @@ const Video = ({
   if(useLoading) {
     return (
       <div className="flex-col w-full">
-        <Skeleton width={280} height={150} className="rounded-full" />
+        <Skeleton 
+          width={280} 
+          height={150} 
+          containerClassName="rounded-xl" 
+        />
         <div className="flex row my-2 space-x-2">
-          <Skeleton width={26} height={26} circle/>
+          <Skeleton width={26} height={26} circle />
           <Skeleton count={3} width={200} height={15} />
         </div>
       </div>

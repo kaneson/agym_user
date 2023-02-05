@@ -22,6 +22,7 @@ import { Helmet } from 'react-helmet'
 import { Header } from '../components'
 
 import { motion } from 'framer-motion'
+import Sidebar from '../components/Sidebar'
 
 const Comment:React.FC = () => {
   return (
@@ -425,7 +426,7 @@ const item = {
 const Video:NextPage = () => {
   const [useShowCommentResponse, setUseShowCommentResponse] = useState(false);
   const [useTitle] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
-
+  const [useShowSidebar, setUseShowSidebar] = useState(false);
   return (
     <motion.div 
       className='flex-col dark:bg-[#121212] bg-white' 
@@ -435,8 +436,14 @@ const Video:NextPage = () => {
     >
       <Header 
         setSearch={() => {}} 
-        setShow={() => {}} 
+        setShow={setUseShowSidebar} 
       />
+
+      <div className='absolute'>
+        {useShowSidebar && (
+          <Sidebar />
+        )}
+      </div>
       
       <Helmet>
         <title>Video</title>
