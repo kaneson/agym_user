@@ -26,6 +26,7 @@ import Sidebar from '../../components/Sidebar'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { ShelfVideoProps } from '../../components/Content'
+import { mockVideos } from '../../utils/mockVideos'
 
 const Comment:React.FC = () => {
   return (
@@ -530,12 +531,10 @@ const Video:NextPage = () => {
     let nextPage = "";
     const options = {
       method: 'GET',
-      // withCredentials: false,
-      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=4N3RWqPIiK4&key=${API}`,
+      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${query.videoId}&key=${API}`,
     };
     
     axios.request(options).then(function (response) {
-      console.log(response.data.items[0].snippet,':video');
       setVideoInfo(
         response.data.items[0].snippet
       );
@@ -543,6 +542,11 @@ const Video:NextPage = () => {
       console.error(error.message);
     });
   },[query]);
+
+  useEffect(() => { 
+    console.log(query.videoId,'query');
+    console.log(videoInfo,'videoInfo'); 
+  },[query,videoInfo]);
 
   return (
     <motion.div 
@@ -573,7 +577,7 @@ const Video:NextPage = () => {
         <iframe 
           className='w-full xl:h-[600px] sm:h-[500px] bg-[black]'
           style={{ minHeight: '400px' }}
-          src='https://www.youtube.com/embed/nGB-vZy3g_I'
+          src={`https://www.youtube.com/embed/${query.videoId}`}
           //@ts-ignore
           frameborder='0'
           allow='autoplay; encrypted-media'
@@ -615,9 +619,11 @@ const Video:NextPage = () => {
           animate="visible"
           className='flex-col flex-1 space-y-2 my-5'
         >
-          {['1','2','3'].map((i) => (
-            <motion.div key={i} variants={item}>
-              <SideVideosList />
+          {mockVideos.map((video) => (
+            <motion.div key={video.videoId} variants={item}>
+              <SideVideosList 
+                video={video} 
+              />
             </motion.div>
           ))}
         </motion.div>

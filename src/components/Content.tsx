@@ -4,30 +4,29 @@ import axios from 'axios';
 
 const ContentVideos = lazy(() => import('./ContentVideos'));
 import FiltersTop from './FiltersTop'
-
-import imageVideo from '../../public/images/video.jpg'
+import { mockVideos } from '../utils/mockVideos';
 
 export interface ShelfVideoProps {
-  kind: string; 
-  videoId: string;
-  channelId:string;
+  kind?: string; 
+  videoId?: string;
+  channelId?:string;
   channelTitle:string;
-  description:string;
-  liveBroadcastContent:string;
-  publishTime:string;
-  publishedAt:string;
+  description?:string;
+  liveBroadcastContent?:string;
+  publishTime?:string;
+  publishedAt?:string;
   thumbnails: {
     default: {
       url: string;
       width: number; 
       height: number;
     }
-    high: {
+    high?: {
       url: string;
       width: number; 
       height: number;
     }
-    medium: {
+    medium?: {
       url: string;
       width: number; 
       height: number;
@@ -70,64 +69,7 @@ interface ContentProps {
 
 const Content:React.FC<ContentProps> = ({ search }) => {
   const [useShelfVideos, setUseShelfVideos] = useState<any[]>([]);
-  // const [useVideos, setUseVideos] = useState<VideoProps[]>([
-  //   { 
-  //     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officiis perferendis animi sed ',
-  //     description: 'description video', author: { avatar: { heigth: 50, width: 60, url: 'https://github.com/omanramlho42.png'}, name: 'Channel Name', url: '' }, 
-  //     uploadedAt: '4' , 
-  //     bestThumbnail: imageVideo , 
-  //     url: '/video', 
-  //     views: 10070,
-  //     subscribers: "@channelName",
-  //     type: 'viddeo',
-  //     verified: true ,
-  //     duration: '3',
-  //     id: '1',
-  //     thumbnails: [],
-  //   },
-  //   { 
-  //     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officiis perferendis animi sed ',
-  //     description: 'description video', author: { avatar: { heigth: 50, width: 60, url: 'http://github.com/omanramlho42.png'}, name: 'Channel Name', url: '' }, 
-  //     uploadedAt: '4' , 
-  //     bestThumbnail: imageVideo , 
-  //     url: '/video', 
-  //     views: 10070,
-  //     subscribers: "@channelName",
-  //     type: 'viddeo',
-  //     verified: true ,
-  //     duration: '3',
-  //     id: '2',
-  //     thumbnails: [],
-  //   },
-  //   { 
-  //     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officiis perferendis animi sed ',
-  //     description: 'description video', author: { avatar: { heigth: 50, width: 60, url: 'http://github.com/omanramlho42.png'}, name: 'Channel Name', url: '' }, 
-  //     uploadedAt: '4' , 
-  //     bestThumbnail: imageVideo , 
-  //     url: '/video', 
-  //     views: 10070,
-  //     subscribers: "@channelName",
-  //     type: 'viddeo',
-  //     verified: true ,
-  //     duration: '3',
-  //     id: '3',
-  //     thumbnails: [],
-  //   },
-  //   { 
-  //     title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officiis perferendis animi sed ',
-  //     description: 'description video', author: { avatar: { heigth: 50, width: 60, url: 'http://github.com/omanramlho42.png'}, name: 'Channel Name', url: '' }, 
-  //     uploadedAt: '4' , 
-  //     bestThumbnail: imageVideo , 
-  //     url: '/video', 
-  //     views: 10070,
-  //     subscribers: "@channelName",
-  //     type: 'viddeo',
-  //     verified: true ,
-  //     duration: '3',
-  //     id: '4',
-  //     thumbnails: [],
-  //   },
-  // ]);
+  const [useVideos] = useState<ShelfVideoProps[]>(mockVideos);
   
     const API = 'AIzaSyAWnSk8uTxl2n8PUZ0dOUELLhFwcOF9l5k';
     const channelId = 'UCvphc_K3Cd0YFTygQsvKUEQ';
@@ -187,7 +129,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
       />
       
       <ContentVideos 
-        videos={useShelfVideos} 
+        videos={useShelfVideos.length > 0 ? useShelfVideos : useVideos} 
         filter={useFilterVideo}
         search={search}
       />

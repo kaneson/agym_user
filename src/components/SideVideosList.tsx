@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, FC } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
-
-import img from '../../public/images/video.jpg'
 
 import { InformationCircleOutline } from 'heroicons-react'
 
 import Skeleton from 'react-loading-skeleton'
 
-const SideVideosList:React.FC = () => {
-  const [useLoading, setUseLaoding] = useState(true);
+import { ShelfVideoProps } from './Content'
 
+interface SideVideosListProps {
+  video: ShelfVideoProps;
+}
+
+const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
+  const [useLoading, setUseLaoding] = useState(true);
+  useEffect(() => { console.log(video,'side videos')},[video]);
   useEffect(() => {
     setTimeout(() => {
       setUseLaoding(false);
@@ -29,12 +33,15 @@ const SideVideosList:React.FC = () => {
     )
   }
 
-
   return (
     <>
-      <Link href={"/video"} className="flex row h-[130px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer">
+      <Link href={`/video/${video.videoId}?channelId=${video.channelId}`} className="flex row h-[130px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer">
         <Image 
-          src={img} 
+          src={{
+            src: video.thumbnails.default.url,
+            width: video.thumbnails.default.width,
+            height: video.thumbnails.default.height
+          }} 
           alt="img" 
           width={200} 
           height={50} 
@@ -42,11 +49,11 @@ const SideVideosList:React.FC = () => {
         />
         <div className='flex-col p-2'>
           <h1 className='font-md font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>
-            Lorem ipsum dollar sign tittle video text
+            { video.title }
           </h1>
           <div className='flex row items-center space-x-2'>
             <p className='text-sm font-medium text-gray-400'>
-              channel name
+              { video.channelTitle }
             </p>
             <InformationCircleOutline size={12} />
           </div>
