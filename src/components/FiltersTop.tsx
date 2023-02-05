@@ -45,7 +45,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
       variants={container}
       initial="hidden"
       animate="visible"
-      className="flex bg-[#eff0f4] dark:bg-[#202020] text-sm flex flex-wrap xl:justify-between lg:justify-start border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
+      className="flex bg-[#eff0f4] dark:bg-[#202020] text-sm flex flex-wrap 2xl:justify-between xl:justify-start border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
     >
     {filtersTop.map(({ title }, idx) => (
       <motion.button 
