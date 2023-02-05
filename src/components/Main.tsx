@@ -14,14 +14,14 @@ const Main:FC<MainProps> = ({ show, search }) => {
       {/* SIDEBAR */}
       {show && (
         <div
-          className='flex z-102 lg:relative sm:absolute'
+          className='flex z-10 xl:relative lg:relative absolute'
         >
           <Sidebar />
         </div>
       )}
 
       {/* CONTENT */}
-      <div className={`flex-1 transition-all `}>
+      <div className={`flex-1 transition-all ${show && 'opacity-70'}  `}>
         <Content search={search} />
       </div>
     </div>
