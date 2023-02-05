@@ -46,7 +46,7 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
             height: video.thumbnails.default.height
           }} 
           alt="img" 
-          width={200} 
+          width={250} 
           height={50} 
           className="rounded-lg mr-2" 
         />
