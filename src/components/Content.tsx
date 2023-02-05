@@ -133,36 +133,44 @@ const Content:React.FC<ContentProps> = ({ search }) => {
       thumbnails: [],
     },
     ]);
+  
+    const API = 'AIzaSyAWnSk8uTxl2n8PUZ0dOUELLhFwcOF9l5k';
+    const channelId = 'UCmFt1y9cbHx3amPRctMEyvA';
 
-  // useEffect(() => {
-
-  //   const options = {
-  //     method: 'GET',
-  //     url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/',
-  //     params: { q: 'aurélio+alfieri' },
-  //     headers: {
-  //       'X-RapidAPI-Key': 'f00cec9078msh573a61c68aa9a49p193ad3jsna8d9057c4752',
-  //       'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-  //     }
-  //   };
-    
-  //   axios.request(options).then(function (response) {
-  //     console.log(response,'reponse');
-  //     setUseVideos(response.data.items);
-  //     setUseShelfVideos(
-  //       response.data.items.filter(
-  //         (i: any) => i.type === 'shelf'
-  //       )
-  //     );
+  useEffect(() => {
+    // aurelioalfieri
+    const options = {
+      method: 'GET',
+      url: `https://www.googleapis.com/youtube/v3/search`,
       
-  //     if(useShelfVideos) {
-  //       console.log(useShelfVideos?.map((i) => i.items));
-  //       console.log(useShelfVideos,'videos');
-  //     }
-  //   }).catch(function (error) {
-  //     console.error(error);
-  //   });
-  // },[])
+      headers: {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'apiKey': API,
+        'clientId': API,
+        'Authorization': `Bearer ${API}`,
+      },
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response,'reponse');
+      // setUseVideos(response.data.items);
+      // setUseShelfVideos(
+      //   response.data.items.filter(
+      //     (i: any) => i.type === 'shelf'
+      //   )
+      // );
+      
+      // if(useShelfVideos) {
+      //   console.log(useShelfVideos?.map((i) => i.items));
+      //   console.log(useShelfVideos,'videos');
+      // }
+    }).catch(function (error) {
+      console.error(error.message);
+    });
+  },[])
 
   const [useFilterVideo, setUseFilterVideos] = useState("");
 

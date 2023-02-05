@@ -14,8 +14,7 @@ const Main:FC<MainProps> = ({ show, search }) => {
       {/* SIDEBAR */}
       {show && (
         <div
-        className='flex' 
-          // className='z-10 absolute'
+          className='flex z-102 lg:relative sm:absolute'
         >
           <Sidebar />
         </div>
