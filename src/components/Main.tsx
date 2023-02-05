@@ -10,14 +10,21 @@ interface MainProps {
 
 const Main:FC<MainProps> = ({ show, search }) => {
   return (
-    <div className='flex flex-row'>
+    <div className='w-full h-[100%] flex row'>
       {/* SIDEBAR */}
       {show && (
-        <Sidebar />
+        <div
+        className='flex' 
+          // className='z-10 absolute'
+        >
+          <Sidebar />
+        </div>
       )}
 
       {/* CONTENT */}
-      <Content search={search} />
+      <div className={`flex-1 transition-all `}>
+        <Content search={search} />
+      </div>
     </div>
   )
 }

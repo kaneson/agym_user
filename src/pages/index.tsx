@@ -9,10 +9,6 @@ import { Header, Main } from '../components'
 const Home: NextPage = () => {  
   const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(true);
   const [search, setSearch] = useState<string>("");
-
-	// const [colorTheme] = useDarkSide();
-	// useEffect(() => { console.log(colorTheme,'theme') },[colorTheme])
-
   return (
     <div>
       <Head>
@@ -22,7 +18,7 @@ const Home: NextPage = () => {
       </Head>
       
 
-      <main className={`w-full h-full dark:bg-[#121212] bg-gray-100 `}>
+      <main className={`h-[100%] dark:bg-[#121212] bg-gray-100 `}>
         {/* HEADER */}
         <Header
           setSearch={setSearch}

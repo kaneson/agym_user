@@ -167,7 +167,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
   const [useFilterVideo, setUseFilterVideos] = useState("");
 
   return (
-    <div className='w-[100%]'>
+    <div className='flex-1'>
       <FiltersTop 
         setFilter={setUseFilterVideos} 
       />
