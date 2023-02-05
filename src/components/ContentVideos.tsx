@@ -59,7 +59,7 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
             kind,
             videoId
         }, idx) => 
-          title.includes(search) && title.includes(filter)  
+          title.toLowerCase().includes(search.toLocaleLowerCase().trim()) && title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())  
           && (
             <motion.div
               key={idx} 
