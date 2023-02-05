@@ -52,14 +52,14 @@ const Sidebar:React.FC = () => {
       initial="hidden"
       animate="visible"
       style={{ minWidth: '80px' }} 
-      className='w-[5%] h-[100vh] flex flex-col items-center bg-[#643ADC] text-[#d9d9d9] dark:text-[#f9f9f9] transition-all'
+      className='w-[5%] h-[100vh] flex flex-col items-center bg-[#5524d9] text-[#f9f9f9] transition-all'
     >
       {sidebarItems.map(({ icon, title }, idx) => (
         // <Link href={`/${title}`}>
           <motion.div 
             key={idx}
             variants={item}
-            className='flex flex-col justify-center cursor-pointer items-center transition-all hover:bg-[#8e3adc] hover:text-white w-full h-20'
+            className='flex flex-col justify-center cursor-pointer items-center transition-all hover:font-bold hover:text-white w-full h-20'
           >
             { icon }
             <h4 className='text-[10px]'>

@@ -150,7 +150,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         'apiKey': API,
         'clientId': API,
-        'Authorization': `Bearer ${API}`,
+        'Authorization': `bearer ${API}`,
       },
     };
     
