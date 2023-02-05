@@ -617,7 +617,7 @@ const Video:NextPage = () => {
           variants={container}
           initial="hidden"
           animate="visible"
-          className='flex-col flex-1 space-y-2 my-5'
+          className='flex-col flex-1 space-y-4 my-5'
         >
           {mockVideos.map((video) => (
             <motion.div key={video.videoId} variants={item}>

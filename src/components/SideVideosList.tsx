@@ -37,7 +37,7 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
     <>
       <Link 
         href={`/video/${video.videoId}?channelId=${video.channelId}`}
-        className="flex row h-[160px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer"
+        className="flex space-y-2 space-x-2 row h-[160px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer"
       >
         <Image 
           src={{
@@ -50,7 +50,7 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
           height={50} 
           className="rounded-lg mr-2" 
         />
-        <div className='flex-col p-2'>
+        <div className='flex-col'>
           <h1 className='md:text-lg lg:text-sm text-sm font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>
             { video.title }
           </h1>
