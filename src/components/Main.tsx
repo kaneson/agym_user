@@ -10,7 +10,7 @@ interface MainProps {
 
 const Main:FC<MainProps> = ({ show, search }) => {
   return (
-    <div className='w-full h-[100%] flex row'>
+    <div className='w-full h-full flex row'>
       {/* SIDEBAR */}
       {show && (
         <div
