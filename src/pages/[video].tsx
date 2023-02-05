@@ -23,6 +23,7 @@ import { Header } from '../components'
 
 import { motion } from 'framer-motion'
 import Sidebar from '../components/Sidebar'
+import { useRouter } from 'next/router'
 
 const Comment:React.FC = () => {
   return (
@@ -427,6 +428,13 @@ const Video:NextPage = () => {
   const [useShowCommentResponse, setUseShowCommentResponse] = useState(false);
   const [useTitle] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
   const [useShowSidebar, setUseShowSidebar] = useState(false);
+
+  const { query }:any = useRouter();
+
+  useEffect(() => {
+    console.log(query.video,'videoId');
+  },[query]);
+
   return (
     <motion.div 
       className='flex-col dark:bg-[#121212] bg-white' 
@@ -469,7 +477,7 @@ const Video:NextPage = () => {
         {/* AREA CENTRAL COMENTARIOS E VIDEO */}
         <div className='col px-4 lg:col-span-2'>  
           <h3 className='xl:text-3xl sm:text-2xl font-medium mb-5 dark:text-white'>
-            { useTitle }
+            {/* { useTitle } */} { query.video }
           </h3>
 
           <div className='flex flex-wrap row justify-between space-x-2 dark:text-white'>       

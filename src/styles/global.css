@@ -4,3 +4,10 @@
   box-sizing: border-box;
   background-color: transparent;
 }
+
+.scroll {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 50%);
+  /* postcss-scrollbar will add the -webkit version automatically! */
+}

@@ -21,6 +21,6 @@ module.exports = {
 module.exports = nextConfig;
 module.exports = {
   images: {
-    domains: ["res.cloudinary.com", "image/webp", "github.com"],
+    domains: ["res.cloudinary.com", "image/webp", "github.com", "i.ytimg.com"],
   }
 }

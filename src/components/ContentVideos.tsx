@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 
 import Video from "./Video";
 
-import { VideoProps } from "./Content";
+import { ShelfVideoProps } from "./Content";
 
 import { motion } from "framer-motion";
 
 interface VideosProps {
-  videos: VideoProps[];
+  videos: ShelfVideoProps[];
   filter?: string;
   search?: string;
 }
@@ -48,21 +48,14 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
       >
         {(
           videos.map(({ 
-            description, 
-            bestThumbnail, 
-            title, 
-            url, 
-            views, 
-            author, 
-            id,
-            duration,
-            badges,
-            isLive,
-            isUpcoming,
+            channelId,
+            channelTitle,
+            description,
+            liveBroadcastContent,
+            publishTime,
+            publishedAt,
             thumbnails,
-            type,
-            upcoming,
-            uploadedAt 
+            title
         }, idx) => 
           title.includes(search) && title.includes(filter)  
           && (
@@ -73,23 +66,14 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
             >
               <Video 
                 key={idx}
-                duration={duration}
-                id={id}
-                badges={badges}
-                isLive={isLive}
-                isUpcoming={isUpcoming}
-                thumbnails={thumbnails}
-                type={type}
-                upcoming={upcoming}
-                uploadedAt={uploadedAt}
+                channelId={channelId}
+                channelTitle={channelTitle}
                 description={description}
-                bestThumbnail={bestThumbnail}
+                liveBroadcastContent={liveBroadcastContent}
+                publishTime={publishTime}
+                publishedAt={publishedAt}
+                thumbnails={thumbnails}
                 title={title}
-                url={url}
-                views={views}
-                author={author} 
-                subscribers={""} 
-                verified={true}
               />
             </motion.div>
           ))
