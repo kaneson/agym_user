@@ -13,17 +13,19 @@ import {
   TrashOutline
 } from 'heroicons-react'
 
-import SideVideosList from '../components/SideVideosList'
+import SideVideosList from '../../components/SideVideosList'
 
 import Image from 'next/image'
 
 import { Helmet } from 'react-helmet'
 
-import { Header } from '../components'
+import { Header } from '../../components'
 
 import { motion } from 'framer-motion'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../../components/Sidebar'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import { ShelfVideoProps } from '../../components/Content'
 
 const Comment:React.FC = () => {
   return (
@@ -274,7 +276,7 @@ const WidgetContentDescription: FC<WidgetContentDescriptionProps> = ({
       <p className='text-md mb-5 dark:text-white'>
         { description.length > 80 ? description.slice(0,80).concat("...") : description  }
       </p>
-      { useShowMoreInfo && (
+      { useShowMoreInfo && description.length > 0 &&(
         <button>
           <span className='font-medium cursor-pointer dark:text-white'>
             Mostrar mais...
@@ -424,15 +426,122 @@ const item = {
   }
 };
 
+interface VideoProps {
+  categoryId: string;
+  channelId: string;
+  channelTitle: string;
+  defaultAudioLanguage: string;
+  defaultLanguage:string;
+  description: string;
+  liveBroadcastContent: string;
+  localized: {
+    title: string; 
+    description: string;
+  }
+  publishedAt: string;
+  thumbnails: {
+    default: {
+      url: string;
+      height: number;
+      width: number;
+    };
+    medium: {
+      url: string;
+      height: number;
+      width: number;
+    }; 
+    high: {
+      url: string;
+      height: number;
+      width: number;
+    }; 
+    standard: {
+      url: string;
+      height: number;
+      width: number;
+    }; 
+    maxres: {
+      url: string;
+      height: number;
+      width: number;
+    };
+  }
+title:string
+}
+
 const Video:NextPage = () => {
   const [useShowCommentResponse, setUseShowCommentResponse] = useState(false);
-  const [useTitle] = useState<string>("Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae non obcaecati.")
   const [useShowSidebar, setUseShowSidebar] = useState(false);
 
+  const [videoInfo, setVideoInfo] = useState<VideoProps>();
+  const [videosList, setVideosList] = useState<ShelfVideoProps[]>([]);
+
   const { query }:any = useRouter();
+  const API = 'AIzaSyAWnSk8uTxl2n8PUZ0dOUELLhFwcOF9l5k';
+
+  // useEffect(() => {
+  //   console.log(query,'query');
+
+  //   let nextPage = "";
+  //   const options = {
+  //     method: 'GET',
+  //     url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${query.channel}&order=date&q=aurelio%2Balfieri&key=${API}&pageToken=${nextPage}`,
+  //   };
+    
+  //   axios.request(options).then(function (response) {
+  //     let array: ShelfVideoProps[] = [];
+  //     response.data.items.map(
+  //       (i: any) => {
+  //         let videoId = i.id.videoId;
+  //         let { 
+  //           channelId, 
+  //           channelTitle, 
+  //           description, 
+  //           kind, 
+  //           liveBroadcastContent, 
+  //           publishTime, 
+  //           publishedAt, 
+  //           thumbnails, 
+  //           title 
+  //         }: ShelfVideoProps = i.snippet;
+          
+  //         array.push({ 
+  //           channelId,
+  //           channelTitle,
+  //           description,
+  //           kind,
+  //           liveBroadcastContent,
+  //           publishedAt,
+  //           publishTime,
+  //           thumbnails,
+  //           title,
+  //           videoId 
+  //         });
+  //       }
+  //     )
+
+  //     setVideosList(array);
+  //   }).catch(function (error) {
+  //     console.error(error.message);
+  //   });
+  // },[query]);
 
   useEffect(() => {
-    console.log(query.video,'videoId');
+    let nextPage = "";
+    const options = {
+      method: 'GET',
+      // withCredentials: false,
+      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=4N3RWqPIiK4&key=${API}`,
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data.items[0].snippet,':video');
+      setVideoInfo(
+        response.data.items[0].snippet
+      );
+    }).catch(function (error) {
+      console.error(error.message);
+    });
   },[query]);
 
   return (
@@ -464,7 +573,7 @@ const Video:NextPage = () => {
         <iframe 
           className='w-full xl:h-[600px] sm:h-[500px] bg-[black]'
           style={{ minHeight: '400px' }}
-          src='https://www.youtube.com/embed/E7wJTI-1dvQ'
+          src='https://www.youtube.com/embed/nGB-vZy3g_I'
           //@ts-ignore
           frameborder='0'
           allow='autoplay; encrypted-media'
@@ -474,23 +583,22 @@ const Video:NextPage = () => {
       </motion.div>
 
       <div className='grid xl:grid-cols-3 md:grid-cols-1 my-2 mx-[5%]' >
-        {/* AREA CENTRAL COMENTARIOS E VIDEO */}
         <div className='col px-4 lg:col-span-2'>  
           <h3 className='xl:text-3xl sm:text-2xl font-medium mb-5 dark:text-white'>
-            {/* { useTitle } */} { query.video }
+            { videoInfo?.title }
           </h3>
 
           <div className='flex flex-wrap row justify-between space-x-2 dark:text-white'>       
             <WidgetChannelInfo 
-              channelName='Channel name' 
-              subscribers={80} 
+              channelName={videoInfo?.channelTitle || ""} 
+              subscribers={80}
             />
             <WidgetActionFilters />
           </div>
 
           <WidgetContentDescription 
             date='3'
-            description='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ex incidunt esse, libero sequi dolorum iure? Iste reprehenderit illum eos aut facilis, nostrum excepturi incidunt voluptate deserunt, rerum autem id.'
+            description={videoInfo?.description || ""}
             views={30}
           />
 
@@ -514,6 +622,7 @@ const Video:NextPage = () => {
           ))}
         </motion.div>
       </div>
+      
     </motion.div>
   )
 }

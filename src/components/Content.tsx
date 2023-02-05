@@ -8,6 +8,8 @@ import FiltersTop from './FiltersTop'
 import imageVideo from '../../public/images/video.jpg'
 
 export interface ShelfVideoProps {
+  kind: string; 
+  videoId: string;
   channelId:string;
   channelTitle:string;
   description:string;
@@ -132,17 +134,45 @@ const Content:React.FC<ContentProps> = ({ search }) => {
 
   useEffect(() => {
     // aurelioalfieri
+    let nextPage = "";
     const options = {
       method: 'GET',
-      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&q=aurelio%2Balfieri&key=${API}`,
+      url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&q=aurelio%2Balfieri&key=${API}&pageToken=${nextPage}`,
     };
     
     axios.request(options).then(function (response) {
-      setUseShelfVideos(
-        response.data.items.map(
-          (i: any) => i.snippet
-        )
-      );
+      let array: ShelfVideoProps[] = [];
+      response.data.items.map(
+        (i: any) => {
+          let videoId = i.id.videoId;
+          let { 
+            channelId, 
+            channelTitle, 
+            description, 
+            kind, 
+            liveBroadcastContent, 
+            publishTime, 
+            publishedAt, 
+            thumbnails, 
+            title 
+          }: ShelfVideoProps = i.snippet;
+          
+          array.push({ 
+            channelId,
+            channelTitle,
+            description,
+            kind,
+            liveBroadcastContent,
+            publishedAt,
+            publishTime,
+            thumbnails,
+            title,
+            videoId 
+          });
+        }
+      )
+
+      setUseShelfVideos(array);
     }).catch(function (error) {
       console.error(error.message);
     });

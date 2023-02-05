@@ -14,6 +14,7 @@ const Video = ({
   liveBroadcastContent,
   publishTime,
   publishedAt,
+  videoId,
   thumbnails,
   title
 } : ShelfVideoProps) => {
@@ -60,7 +61,7 @@ const Video = ({
 
   return (
     <div className="bg-gray-200 dark:bg-[#202020] rounded-lg w-[280px] mb-5 flex flex-col shadow-lg">
-      <Link href={`/${channelId}`}>
+      <Link href={`/video/${videoId}?channelId=${channelId}`}>
         <Image 
           alt="thumbnail" 
           src={{ 

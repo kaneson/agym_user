@@ -55,7 +55,9 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
             publishTime,
             publishedAt,
             thumbnails,
-            title
+            title,
+            kind,
+            videoId
         }, idx) => 
           title.includes(search) && title.includes(filter)  
           && (
@@ -66,6 +68,8 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
             >
               <Video 
                 key={idx}
+                kind={kind}
+                videoId={videoId}
                 channelId={channelId}
                 channelTitle={channelTitle}
                 description={description}
