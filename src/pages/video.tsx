@@ -109,7 +109,7 @@ const WidgetChannelInfo: FC<WidgetChannelInfoProps> = ({ channelName, subscriber
           height: 50
         }} 
         alt="avatar" 
-        className='rounded-full cursor-pointer'
+        className='rounded-full cursor-pointer dark:bg-white bg-[#121212]'
         width={40}
         height={40} 
       />
@@ -218,7 +218,7 @@ const WidgetActionFilters:React.FC = () => {
       { filtersAction.map((i, idx) => (
         <motion.div 
           key={idx} 
-          className='flex justify-around px-3 my-2 rounded-full py-2 w-[auto] bg-gray-100 dark:bg-[#202020] hover:bg-gray-200 dark:hover:bg-[#404040] active:bg-gray-300 transition-all'
+          className='flex justify-around px-3 my-2 cursor-pointer rounded-full py-2 w-[auto] bg-gray-100 dark:bg-[#202020] hover:bg-gray-200 dark:hover:bg-[#404040] active:bg-gray-300 transition-all'
           variants={item}
         >
           { i?.icon }
@@ -299,8 +299,10 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
           621 comentarios
         </h5>
         <div className='flex items-center font-medium cursor-pointer'>
-          <FilterOutline />
-          <p className='dark:text-white'>Ordenar por</p>
+          <FilterOutline className='dark:text-white text-black' />
+          <p className='dark:text-white'>
+            Ordenar por
+          </p>
         </div>
       </div>
 
@@ -314,7 +316,7 @@ const WidgetCommentArea: FC<WidgetCommentAreaProps> = ({ onClick, value }) => {
           alt="avatar"
           width={40} 
           height={40} 
-          className="rounded-full" 
+          className="rounded-full dark:bg-white bg-[#121212]" 
         />
         <form className='flex-col w-full space-y-2' action='/' method='post' onSubmit={() => {}}>
           <div className='flex border-b-2 rounded-sm'>
@@ -426,7 +428,7 @@ const Video:NextPage = () => {
 
   return (
     <motion.div 
-      className='flex-col dark:bg-[#121212]' 
+      className='flex-col dark:bg-[#121212] bg-white' 
       variants={container}
       initial="hidden"
       animate="visible"

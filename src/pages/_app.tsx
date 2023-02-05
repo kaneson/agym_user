@@ -4,7 +4,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import type { AppProps } from 'next/app'
 
 import { HelmetProvider } from 'react-helmet-async'
-import TransitionScreen from './TransitionScreen'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
