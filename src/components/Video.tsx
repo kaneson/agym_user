@@ -41,7 +41,7 @@ const Video = ({
         2000
       );
     }
-  },[]);
+  },[channelId]);
 
   if(useLoading) {
     return (

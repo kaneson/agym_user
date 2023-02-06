@@ -17,7 +17,7 @@ const TransitionScreen:NextPage = () => {
     setTimeout(() => {
       navigation.push('/');
     },4000)
-  },[]);
+  },[navigation]);
   
   return (
     <div 

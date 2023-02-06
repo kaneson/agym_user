@@ -32,22 +32,22 @@ const Header: React.FC<HeaderProps> = ({
   setSearch
 }) => {
 
-  const Dictaphone = () => {
-    const {
-      transcript,
-      listening,
-      resetTranscript,
-      browserSupportsSpeechRecognition
-    } = useSpeechRecognition();
+  // const Dictaphone = () => {
+  //   const {
+  //     transcript,
+  //     listening,
+  //     resetTranscript,
+  //     browserSupportsSpeechRecognition
+  //   } = useSpeechRecognition();
   
-    if (!browserSupportsSpeechRecognition) {
-      return <span>
-        Browser doesn't support speech recognition.
-      </span>;
-    }
+  //   if (!browserSupportsSpeechRecognition) {
+  //     return <span>
+  //       Browser doesn't support speech recognition.
+  //     </span>;
+  //   }
 
-    console.log(listening, transcript);
-  }
+  //   console.log(listening, transcript);
+  // }
 
   return (
     <div className='flex flex-1 space-x-2 justify-between items-center w-full bg-transparent h-10 px-6 py-8'>
