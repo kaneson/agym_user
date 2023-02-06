@@ -48,7 +48,7 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
           alt="img" 
           width={250} 
           height={50} 
-          className="rounded-lg mr-2" 
+          className="rounded-lg mr-2"
         />
         <div className='flex-col'>
           <h1 className='md:text-lg lg:text-sm text-sm font-medium text-[#121212] dark:text-[#F9F9F9] mb-1'>

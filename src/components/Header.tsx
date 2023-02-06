@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+import '@speechly/speech-recognition-polyfill'
+import 'regenerator-runtime'
 
 import logo from '../../public/images/logo.png';
 
@@ -17,6 +20,8 @@ import Switcher from './Switcher';
 
 import { motion } from 'framer-motion'
 
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+
 interface HeaderProps {
   setShow: (value: any) => any;
   setSearch: (value: string) => void;
@@ -27,15 +32,21 @@ const Header: React.FC<HeaderProps> = ({
   setSearch
 }) => {
 
-  const icon = {
-    hidden: {
-      pathLength: 0,
-      fill: "rgba(255, 255, 255, 0)"
-    },
-    visible: {
-      pathLength: 1,
-      fill: "rgba(255, 255, 255, 1)"
+  const Dictaphone = () => {
+    const {
+      transcript,
+      listening,
+      resetTranscript,
+      browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
+  
+    if (!browserSupportsSpeechRecognition) {
+      return <span>
+        Browser doesn't support speech recognition.
+      </span>;
     }
+
+    console.log(listening, transcript);
   }
 
   return (
@@ -143,6 +154,13 @@ const Header: React.FC<HeaderProps> = ({
         </motion.form>
 
         <motion.button 
+          // onClick={Dictaphone}
+          onMouseUp={() => 
+            SpeechRecognition.startListening()
+          }
+          onMouseDown={() => 
+            SpeechRecognition.stopListening()
+          }
           className="bg-[#643ADC] text-white h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
