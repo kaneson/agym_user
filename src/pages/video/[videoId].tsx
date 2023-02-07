@@ -22,9 +22,13 @@ import { Helmet } from 'react-helmet'
 import { Header } from '../../components'
 
 import { motion } from 'framer-motion'
+
 import Sidebar from '../../components/Sidebar'
+
 import { useRouter } from 'next/router'
+
 import axios from 'axios'
+
 import { ShelfVideoProps } from '../../components/Content'
 import { mockVideos } from '../../utils/mockVideos'
 
