@@ -48,7 +48,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
         initial="hidden"
         animate="visible"
         // style={{ overflowX: 'scroll', scrollbarWidth: 'thin', scrollbarColor: 'rgba(0, 0 ,50)', scrollBehavior: 'smooth' }}
-        className="flex scroll flex-wrap bg-[#eff0f4] dark:bg-[#202020] text-sm flex 2xl:justify-between xl:justify-start border border-r-0 border-l-0 border-t-[0.4px] border-b-[1px] border-gray-300 dark:border-gray-800 py-4 px-6"
+        className="scroll flex-wrap bg-[#eff0f4] dark:bg-[#202020] text-sm flex 2xl:justify-between xl:justify-start py-4 px-6"
       >
       {filtersTop.map(({ title }, idx) => (
         <motion.button 
@@ -56,7 +56,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
           variants={item}
           onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
         >
-          <h3 className="bg-[#e1e3e9] dark:bg-[#606060] text-[#121212] dark:text-[#F9F9F9] hover:bg-gray-400 cursor-pointer rounded-full text-center px-3 py-1 my-1 mx-1">
+          <h3 className="bg-[#F8F9FC] dark:bg-[#606060] font-bold text-[#121212] dark:text-[#F9F9F9] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer text-center px-3 py-3 my-1 mx-1">
             { title }
           </h3>
         </motion.button>

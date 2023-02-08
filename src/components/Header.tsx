@@ -11,6 +11,9 @@ import {
   MicrophoneOutline,
   ViewGridOutline,
   DotsVerticalOutline,
+  CalendarOutline,
+  LogoutOutline,
+  UserCircleOutline,
 } from 'heroicons-react'
 
 import Image from 'next/image'
@@ -50,7 +53,8 @@ const Header: React.FC<HeaderProps> = ({
   // }
 
   return (
-    <div className='flex flex-1 space-x-2 justify-between items-center w-full bg-transparent h-10 px-6 py-8'>
+    <div className='flex flex-wrap-reverse space-y-4 min-w-[150px] flex-1 space-x-2 justify-between items-center w-full h-full bg-transparent py-8'>
+  
       <div className='mx-3 flex cursor-pointer items-center'>
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -97,8 +101,8 @@ const Header: React.FC<HeaderProps> = ({
               alt="logo" 
               src={logo}
               width={135}
-              height={70}
-              style={{ minWidth:50 }}
+              height={120}
+              style={{ minWidth:50, maxWidth: 135 }}
             />
           </motion.div>
         </Link>
@@ -124,9 +128,9 @@ const Header: React.FC<HeaderProps> = ({
         </motion.div>
       </div>
 
-      <div className='flex items-center w-full justify-center'>
+      <div className='flex w-[600px] items-center justify-center'> 
         <motion.form 
-          className='flex items-center justify-center rounded-l-full w-[50%]'
+          className='flex-1 flex items-center justify-center mx-10 rounded-l-full w-[50%]'
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -145,10 +149,10 @@ const Header: React.FC<HeaderProps> = ({
           <input 
             type="text" 
             placeholder='Search' 
-            className='flex w-full shadow-md p-3 bg-[#ebedf3] dark:bg-[#404040] h-10 placeholder:text-lg dark:placeholder:text-white placeholder:relative placeholder:left-2 rounded-l-full z-10 cursor-pointer' 
+            className='flex w-full shadow-md p-3 bg-[#ebedf3] dark:bg-[#404040] h-10 placeholder:text-lg dark:placeholder:text-white placeholder:relative placeholder:left-2 rounded-l-xl z-10 cursor-pointer' 
             onChange={(event) => setSearch(event.target.value)}
           />
-          <button className='h-10 w-16 items-center shadow-md p-2 bg-[#643ADC] text-white border-l-2 border-gray-300 dark:border-gray-900 rounded-r-full justify-center flex'>
+          <button className='h-10 w-12 items-center shadow-md bg-[#643ADC] text-white border-l-2 border-gray-300 dark:border-gray-900 rounded-r-xl justify-center flex'>
             <SearchOutline className='h-5' />
           </button>
         </motion.form>
@@ -161,7 +165,7 @@ const Header: React.FC<HeaderProps> = ({
           onMouseDown={() => 
             SpeechRecognition.stopListening()
           }
-          className="bg-[#643ADC] text-white h-10 w-10 shadow-lg ml-4 rounded-full flex justify-center items-center"
+          className="bg-[#643ADC] text-white h-10 w-10 shadow-lg rounded-full flex justify-center items-center"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -180,22 +184,29 @@ const Header: React.FC<HeaderProps> = ({
           <MicrophoneOutline />
         </motion.button>
       </div>
+      
+      <div 
+        className='flex justify-between items-center space-x-5 border-l-2 border-l-yellow-400'
+      >
+        <div className='flex flex-wrap mx-4'>
+          <p className='text-md'>
+            Fervereiro, junho, 14
+          </p>
+        </div>
 
-      <div className='flex justify-between h-32'>
-        <ViewGridOutline className='h-6 cursor-pointer' />
-        <DotsVerticalOutline className='h-6 cursor-pointer' />
-        <Image
-          src={{
-            src: "/www.github.com/omanramalho42.png",
-            width: 50,
-            height: 50
-          }}
-          alt=''
-          width={50}
-          height={50}
-          style={{ objectFit: "contain" }}
-          className="cursor-pointer rounded-full"
-        />
+        <button>
+          <CalendarOutline size={30} color="gray" />
+        </button>
+        <button>
+          <LogoutOutline size={30} color="gray" />
+        </button>
+      </div>
+      
+      <div className='flex justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
+        <p className='font-semibold text-md text-[#909090]'>
+          Thiago Costa
+        </p>
+        <UserCircleOutline size={42} color={"gray"} />
       </div>
 
     </div>
