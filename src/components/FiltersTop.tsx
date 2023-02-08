@@ -2,6 +2,9 @@ import React from "react"
 
 import { motion } from "framer-motion";
 
+import HorizontalScroll from "react-scroll-horizontal";
+import { ArrowLeft, ArrowRight } from "heroicons-react";
+
 interface FilterTopProps {
   setFilter: (title: string) => void;
 }
@@ -9,14 +12,12 @@ interface FilterTopProps {
 const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
   const filtersTop = [
     { title: 'Todos' },
-    { title: 'Fortalecimento Joelho' },
-    { title: 'Fortalecimento Tornozelo e pé' },
-    { title: 'Treino' },
-    { title: 'Idosos' },
-    { title: 'Barriga' },
+    { title: 'Equilíbrio' },
+    { title: 'Cardio / Respiratório' },
+    { title: 'Fortalecimento' },
+    { title: 'Flexibilidade' },
     { title: 'Pernas' },
     { title: 'Caminhada' },
-    { title: 'Equilíbrio' },
     { title: 'Ginástica' },
     { title: 'Exercícios' },
   ];
@@ -42,26 +43,37 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
   };
 
   return (
-    <div className="w-full">
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        // style={{ overflowX: 'scroll', scrollbarWidth: 'thin', scrollbarColor: 'rgba(0, 0 ,50)', scrollBehavior: 'smooth' }}
-        className="scroll flex-wrap bg-[#eff0f4] dark:bg-[#202020] text-sm flex 2xl:justify-between xl:justify-start py-4 px-6"
+    <div className="flex bg-[#eff0f4] dark:bg-[#202020]">
+      <HorizontalScroll
+        className="scroll items-center w-full flex xl:mx-40 lg:mx-30 md:mx-20" 
+        style={{ height: '120px' }}
       >
-      {filtersTop.map(({ title }, idx) => (
-        <motion.button 
-          key={idx}
-          variants={item}
-          onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
+        {/* <div className="rounded-full bg-#000">
+          <ArrowLeft className="relative top-10" size={32} />
+        </div> */}
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="flex"
         >
-          <h3 className="bg-[#F8F9FC] dark:bg-[#606060] font-bold text-[#121212] dark:text-[#F9F9F9] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer text-center px-3 py-3 my-1 mx-1">
-            { title }
-          </h3>
-        </motion.button>
-      ))}
-      </motion.div>
+          {filtersTop.map(({ title }, idx) => (
+            <motion.button 
+              key={idx}
+              variants={item}
+              className="my-8 mx-2 text-[#121212] dark:text-[#F9F9F9] min-w-[250px] bg-[#F8F9FC] dark:bg-[#606060] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer"
+              onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
+            >
+              <h3 className="font-bold text-sm text-center">
+                { title }
+              </h3>
+            </motion.button>
+          ))}
+        </motion.div>
+        
+        {/* <ArrowRight className="relative left-10" size={32} /> */}
+
+      </HorizontalScroll>
     </div>
   )
 }

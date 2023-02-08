@@ -21,7 +21,7 @@ const Main:FC<MainProps> = ({ show, search }) => {
       )}
 
       {/* CONTENT */}
-      <div className={`flex-1 xl:mx-40 lg:mx-30 md:mx-20 transition-all ${show && 'opacity-70 lg:opacity-100'}`}>
+      <div className={`flex-1 transition-all ${show && 'opacity-70 lg:opacity-100'}`}>
         <Content search={search} />
       </div>
     </div>

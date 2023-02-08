@@ -123,16 +123,18 @@ const Content:React.FC<ContentProps> = ({ search }) => {
   const [useFilterVideo, setUseFilterVideos] = useState("");
 
   return (
-    <div className='flex-1'>
+    <div className=''>
       <FiltersTop 
         setFilter={setUseFilterVideos} 
       />
       
-      <ContentVideos 
-        videos={useShelfVideos.length > 0 ? useShelfVideos : useVideos} 
-        filter={useFilterVideo}
-        search={search}
-      />
+      <div className='flex xl:mx-40 lg:mx-30 md:mx-20'>
+        <ContentVideos 
+          videos={useShelfVideos.length > 0 ? useShelfVideos : useVideos} 
+          filter={useFilterVideo}
+          search={search}
+        />
+      </div>
     </div>
   )
 }

@@ -53,7 +53,9 @@ const Header: React.FC<HeaderProps> = ({
   // }
 
   return (
-    <div className='flex flex-wrap space-y-4 min-w-[150px] flex-1 space-x-2 sm:justify-between justify-center items-center w-full h-full bg-transparent py-8'>
+    <header
+      className='flex-1 flex xl:mx-40 lg:mx-30 md:mx-20 flex-wrap md:flex-wrap space-y-4 min-w-[150px] space-x-2 sm:justify-between justify-center items-center py-8'
+    >
   
       <div className='mx-3 flex cursor-pointer items-center'>
         <motion.div
@@ -73,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({
           }}
         >
           <MenuOutline 
-            className='h-7 mr-4 dark:text-[#FFF] color-[#121212] '
+            className='h-7 mr-4 dark:text-[#FFF] text-[#121212] hover:text-[#5524d9] dark:hover:text-[#5524d9] transition-all'
             onClick={
               () => setShow((value:any) => !value)
             } 
@@ -128,9 +130,9 @@ const Header: React.FC<HeaderProps> = ({
         </motion.div>
       </div>
 
-      <div className='flex w-[600px] items-center justify-center'> 
+      <div className='flex w-[600px] space-x-2 items-center justify-center px-1 sm:px-0'> 
         <motion.form 
-          className='flex-1 flex items-center justify-center mx-10 rounded-l-full w-[50%]'
+          className='flex-1 flex items-center justify-center mx:5 rounded-l-full w-[50%]'
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -147,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({
           }}
         >
           <input 
-            type="text" 
+            type="text"
             placeholder='Search' 
             className='flex w-full shadow-md p-3 bg-[#ebedf3] dark:bg-[#404040] h-10 placeholder:text-lg dark:placeholder:text-white placeholder:relative placeholder:left-2 rounded-l-xl z-10 cursor-pointer' 
             onChange={(event) => setSearch(event.target.value)}
@@ -187,27 +189,32 @@ const Header: React.FC<HeaderProps> = ({
       
       <div className='lg:flex hidden lg:visible justify-between items-center space-x-5 border-l-2 border-l-yellow-400'>
         <div className='flex flex-wrap mx-4'>
-          <p className='text-md'>
+          <p className='text-md dark:text-white'>
             Fervereiro, junho, 14
           </p>
         </div>
 
         <button>
-          <CalendarOutline size={30} color="gray" />
+          <CalendarOutline size={30} color="gray" className='hover:text-[#5524d9] transition-all' />
         </button>
         <button>
-          <LogoutOutline size={30} color="gray" />
+          <LogoutOutline size={30} color="gray" className='hover:text-[#5524d9] transition-all' />
         </button>
       </div>
       
-      <div className='lg:flex hidden lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
+      <div className='lg:flex hidden cursor-pointer lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
         <p className='font-semibold text-md text-[#909090]'>
           Thiago Costa
         </p>
-        <UserCircleOutline size={42} color={"gray"} />
+        <Image 
+          src={{ src:"https://ca.slack-edge.com/T02G05R726R-U02GFQN1MCH-8694f2745211-512", width: 40, height: 40 }}
+          alt="image"
+          className="rounded-full w-[25%] h-[100%]" 
+        />
+        {/* <UserCircleOutline size={42} color={"gray"} className="hover:text-[#5524d9] transition-all" /> */}
       </div>
 
-    </div>
+    </header>
   )
 }
 

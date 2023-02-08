@@ -25,7 +25,7 @@ const Home: NextPage = () => {
 
       <main className={`dark:bg-[#121212] bg-[#F8F9FC] `}>
         {/* HEADER */}
-        <div className='xl:mx-40 lg:mx-30 md:mx-20'>
+        <div>
           <Header
             setSearch={setSearch}
             setShow={setUseShowToggleMenu} 
