@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({
   // }
 
   return (
-    <div className='flex flex-wrap-reverse space-y-4 min-w-[150px] flex-1 space-x-2 justify-between items-center w-full h-full bg-transparent py-8'>
+    <div className='flex flex-wrap space-y-4 min-w-[150px] flex-1 space-x-2 sm:justify-between justify-center items-center w-full h-full bg-transparent py-8'>
   
       <div className='mx-3 flex cursor-pointer items-center'>
         <motion.div
@@ -185,9 +185,7 @@ const Header: React.FC<HeaderProps> = ({
         </motion.button>
       </div>
       
-      <div 
-        className='flex justify-between items-center space-x-5 border-l-2 border-l-yellow-400'
-      >
+      <div className='lg:flex hidden lg:visible justify-between items-center space-x-5 border-l-2 border-l-yellow-400'>
         <div className='flex flex-wrap mx-4'>
           <p className='text-md'>
             Fervereiro, junho, 14
@@ -202,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({
         </button>
       </div>
       
-      <div className='flex justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
+      <div className='lg:flex hidden lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
         <p className='font-semibold text-md text-[#909090]'>
           Thiago Costa
         </p>

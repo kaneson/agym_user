@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         </Helmet>
       </Head>
       
-      <div className='flex-1 h-[50px] bg-[#5524d9]'>
+      <div className='flex-1 p-2 bg-[#5524d9]'>
         <p className='flex flex-wrap justify-center text-xl font-semibold text-white text-center p-2 space-x-2'>
           Olá Thiago Costa, a sua rotina de exercícios está esperando por ti!
         </p>
