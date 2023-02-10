@@ -203,7 +203,7 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       
       <div className='lg:flex hidden cursor-pointer lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
-        <p className='font-semibold text-md text-[#909090]'>
+        <p className='font-semibold text-md text-[#909090] hover:text-[#5524d9]'>
           Thiago Costa
         </p>
         <Image 

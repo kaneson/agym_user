@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 import { motion } from "framer-motion";
 
@@ -7,9 +7,10 @@ import { ArrowLeft, ArrowRight } from "heroicons-react";
 
 interface FilterTopProps {
   setFilter: (title: string) => void;
+  filter?: string;
 }
 
-const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
+const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
   const filtersTop = [
     { title: 'Todos' },
     { title: 'Equilíbrio' },
@@ -42,6 +43,31 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
     }
   };
 
+  const activeRef: any = useRef();
+  const [active, setActive] = useState<any> ([
+    filtersTop.map((i) => (
+      { title: i.title, active: false }
+    ))
+  ]);
+
+  useEffect(() => { console.log(active,'active') },[active]);
+
+  const handleActiveFilter = (title: string) => {
+    // console.log(title, 'fn');
+    let newFiltersList = 
+      active.map(((i:any) => 
+        i.title === title ? ( 
+          { active: true }
+        ) : ( { title: i.title, active: false } )
+      ));
+
+      console.log(newFiltersList,'NEW FILTER LIST');
+
+    // active.map((i:any) => i.title === title && (
+    //   setActive({ title, active: true })
+    // ));
+  }
+
   return (
     <div className="flex bg-[#eff0f4] dark:bg-[#202020]">
       <HorizontalScroll
@@ -61,8 +87,18 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter }) => {
             <motion.button 
               key={idx}
               variants={item}
+              ref={activeRef}
               className="my-8 mx-2 text-[#121212] dark:text-[#F9F9F9] min-w-[250px] bg-[#F8F9FC] dark:bg-[#606060] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer"
-              onClick={() => title === 'Todos' ? setFilter("") : setFilter(title)}
+              onClick={() =>
+                title === 'Todos' 
+                ? (
+                  setFilter(""), 
+                  handleActiveFilter(title) 
+                ) : ( 
+                  setFilter(title),
+                  handleActiveFilter(title)
+                )
+              }
             >
               <h3 className="font-bold text-sm text-center">
                 { title }

@@ -126,6 +126,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
     <div className=''>
       <FiltersTop 
         setFilter={setUseFilterVideos} 
+        filter={useFilterVideo}
       />
       
       <div className='flex xl:mx-40 lg:mx-30 md:mx-20'>
