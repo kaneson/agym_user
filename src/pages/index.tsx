@@ -34,6 +34,9 @@ const Home: NextPage = () => {
         {/* INFO */}
         <Main 
           search={search}
+          setShow={
+            () => setUseShowToggleMenu((value) => !value)
+          }
           show={useShowToggleMenu} 
         />
       </main>

@@ -5,6 +5,7 @@ import axios from 'axios';
 const ContentVideos = lazy(() => import('./ContentVideos'));
 import FiltersTop from './FiltersTop'
 import { mockVideos } from '../utils/mockVideos';
+import MenuFilterTop from './MenuFilterTop';
 
 export interface ShelfVideoProps {
   kind?: string; 
@@ -123,7 +124,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
   const [useFilterVideo, setUseFilterVideos] = useState("");
 
   return (
-    <div className=''>
+    <div className='flex-1 flex-col'>
       <FiltersTop 
         setFilter={setUseFilterVideos} 
         filter={useFilterVideo}

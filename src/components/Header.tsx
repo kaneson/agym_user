@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({
     >
   
       <div className='mx-3 flex cursor-pointer items-center'>
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -80,7 +80,8 @@ const Header: React.FC<HeaderProps> = ({
               () => setShow((value:any) => !value)
             } 
           />
-        </motion.div>
+        </motion.div> */}
+      
         <Link href="/" className='container'>
           <motion.div
             className="box rounded-xl mx-4 transition hover:scale-105 mb-1"
@@ -190,7 +191,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className='lg:flex hidden lg:visible justify-between items-center space-x-5 border-l-2 border-l-yellow-400'>
         <div className='flex flex-wrap mx-4'>
           <p className='text-md dark:text-white'>
-            Fervereiro, junho, 14
+            June, 08, 2023
           </p>
         </div>
 

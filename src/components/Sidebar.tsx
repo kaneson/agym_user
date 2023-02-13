@@ -11,7 +11,7 @@ import {
 import { motion } from'framer-motion';
 import Link from 'next/link';
 
-const Sidebar:React.FC = () => {
+const Sidebar:React.FC<any> = ({ handleShow }) => {
   interface SideBarProps {
     title: string;
     icon: React.ReactNode;
@@ -59,6 +59,7 @@ const Sidebar:React.FC = () => {
           <motion.div 
             key={idx}
             variants={item}
+            onClick={handleShow}
             className='flex flex-col justify-center cursor-pointer items-center transition-all hover:font-bold hover:text-white w-full h-20'
           >
             { icon }
