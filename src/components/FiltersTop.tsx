@@ -35,6 +35,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
   }
 
   function scrollLft() {
+    console.log("left");
     const distance = 300;
     const outsider:any = document.getElementsByClassName('horizontal-scroll');
 
@@ -45,6 +46,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
   }
   
   function scrollRight() {
+    console.log("right");
     const distance = 300;
     const outsider:any = document.getElementsByClassName('horizontal-scroll');
 
@@ -69,17 +71,17 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="items-center horizontal-scroll w-full flex xl:mx-40 lg:mx-30 sm:mx-10 md:mx-20 mx-5"
-      >
+        className="items-center w-full flex xl:mx-40 lg:mx-30 sm:mx-10 md:mx-20 mx-5"
+        >
         <HorizontalScroll
-          style={{ height: '120px', overflowX: 'hidden' }}
           ref={activeRef}
+          className="horizontal-scroll"
+          style={{ height: '120px', overflowX: 'hidden' }}
         >
           {active[0].map(({ title, active }: any, idx: number) => (
             <motion.button
               key={idx}
               variants={item}
-              ref={activeRef}
               style={{ backgroundColor: active ? '#14d4f1' : '' }}
               className={`my-8 mx-2 h-[50px] text-[#121212] dark:text-[#F9F9F9] bg-[#F8F9FC] min-w-[250px] dark:bg-[#606060] hover:bg-[#14d4f1] dark:hover:bg-[#14d4f1] hover:text-[#5524d9] dark:hover:text-[#5524d9] cursor-pointer`}
               onClick={() =>
