@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({
   //   console.log(listening, transcript);
   // }
 
-  const [todayDate, setTodayDate] = useState(Date());
+  const [todayDate, setTodayDate] = useState(Date.now());
 
   return (
     <header
@@ -192,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className='lg:flex hidden lg:visible justify-between items-center space-x-5 border-l-2 border-l-yellow-400'>
         <div className='flex flex-wrap mx-4'>
           <p className='text-md dark:text-white'>
-            <Moment date={todayDate} format="LL"/>
+            <Moment date={todayDate} format="LL" />
           </p>
         </div>
 

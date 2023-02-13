@@ -583,9 +583,9 @@ const Video:NextPage = () => {
           style={{ minHeight: '400px' }}
           src={`https://www.youtube.com/embed/${query.videoId}`}
           //@ts-ignore
-          frameborder='0'
+          frameBorder='0'
           allow='autoplay; encrypted-media'
-          allowfullscreen
+          allowFullScreen
           title='video'
         />
       </motion.div>

@@ -64,7 +64,7 @@ const Video = ({
   return (
     <div className="bg-gray-200 dark:bg-[#202020] rounded-lg mb-5 flex flex-col shadow-lg">
       <Link href={`/video/${videoId}?channelId=${channelId}`}>
-        <Image 
+        <Image
           alt="thumbnail" 
           src={{ 
             src: thumbnails.default.url, 
@@ -76,7 +76,11 @@ const Video = ({
       </Link>
       <div className="flex justify-around p-1 mt-2" style={{ maxHeight: 150, minHeight: 135 }}>
         <Image 
-          src={{ src:"https://ca.slack-edge.com/T02G05R726R-U02GFQN1MCH-8694f2745211-512", width: 40, height: 40 }}
+          src={{ 
+            src:"https://ca.slack-edge.com/T02G05R726R-U02GFQN1MCH-8694f2745211-512", 
+            width: 40,
+            height: 40 
+          }}
           alt="image"
           className="rounded-full w-[11%] h-[100%]" 
         />

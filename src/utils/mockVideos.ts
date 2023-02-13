@@ -39,20 +39,20 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/bB6g_US20R8/mqdefault_6s.webp?du=3000&sqp=CO3t_54G&rs=AOn4CLAOtEsGYr3qvGmCDoIXz3EwaL7kpA',
+        url: 'https://i.ytimg.com/an_webp/bB6g_US20R8/mqdefault_6s.webp?du=3000&sqp=CL7Pqp8G&rs=AOn4CLDE4wdBepTHoOZl4DCCCuCHU2v6PQ',
         width: 50,
       }
     }
   },
   { 
-    title: '🔴 CAMINHADA EM CASA 15 MIN | Treino para emagrecer | AO VIVO | Exercícios Iniciantes | Nível 3',
+    title: '🔴 CAMINHADA EM CASA 10MIL PASSOS - 10 | NÍVEL 3 e 4 | Exercícios sem impacto para emagrecer',
     channelId: 'UCvphc_K3Cd0YFTygQsvKUEQ',
     channelTitle: 'Aurélio Alfieri',
     kind: '',
     liveBroadcastContent: '',
     publishedAt: '',
     publishTime: '3',
-    videoId: 'ug1aHRd-B64',
+    videoId: 'HipZs4QIOpw',
     description: `
       Aula completa com exercícios para idosos em casa, sentado na cadeira usando uma toalha
       Perfeito para melhorar a mobilidade, o alongamento e a postura.
@@ -80,7 +80,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/ug1aHRd-B64/mqdefault_6s.webp?du=3000&sqp=COyIgJ8G&rs=AOn4CLBKrgkKprnZlen1QBEd_J3PMUyg6g',
+        url: 'https://i.ytimg.com/an_webp/HipZs4QIOpw/mqdefault_6s.webp?du=3000&sqp=CODQqp8G&rs=AOn4CLAnMem6v03h-_8HDmiv_lDUzTfr-w',
         width: 50,
       }
     }
@@ -121,7 +121,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/9nBAc31cgbk/mqdefault_6s.webp?du=3000&sqp=CJzu_54G&rs=AOn4CLArkE1w2Wvf9Ipg8eToDFZPcGuoSA',
+        url: 'https://i.ytimg.com/an_webp/9nBAc31cgbk/mqdefault_6s.webp?du=3000&sqp=CMK-qp8G&rs=AOn4CLBNXgephtHWZPW6WBmXCzt6J44X7Q',
         width: 50,
       }
     }
@@ -134,7 +134,7 @@ export const mockVideos: ShelfVideoProps[] = [
     liveBroadcastContent: '',
     publishedAt: '',
     publishTime: '3',
-    videoId: 'JrVyCGblQbg',
+    videoId: 'hYYIQW7IfyI',
     description: `
       Aula completa com exercícios para idosos em casa, sentado na cadeira usando uma toalha
       Perfeito para melhorar a mobilidade, o alongamento e a postura.
@@ -162,7 +162,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/JrVyCGblQbg/mqdefault_6s.webp?du=3000&sqp=CLCSgJ8G&rs=AOn4CLDSxMsdhAVBBCxfPG5uW_6KgVTfag',
+        url: 'https://i.ytimg.com/an_webp/hYYIQW7IfyI/mqdefault_6s.webp?du=3000&sqp=CLbNqp8G&rs=AOn4CLACmDsGxYltJRR7gohRfvPsUEU2kg',
         width: 50,
       }
     }
@@ -203,7 +203,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/EUMRaAB2dl0/mqdefault_6s.webp?du=3000&sqp=CLzl_54G&rs=AOn4CLCC167k1CA82cuIn7xy0imBPLKw6g',
+        url: 'https://i.ytimg.com/an_webp/HfU0GT-XwAo/mqdefault_6s.webp?du=3000&sqp=CNTOqp8G&rs=AOn4CLCf_2YigqRuiUrkS8uLnHxH8795xg',
         width: 50,
       }
     }
@@ -244,7 +244,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/Cc5Z1Fun5nc/mqdefault_6s.webp?du=3000&sqp=CN73_54G&rs=AOn4CLD89Um8iajfhERbsQpJ5bFNKSE6UQ',
+        url: 'https://i.ytimg.com/an_webp/Cc5Z1Fun5nc/mqdefault_6s.webp?du=3000&sqp=CPjmqp8G&rs=AOn4CLCdfTXf2N6q4uv_rfUfLKKVQDr6AA',
         width: 50,
       }
     }
@@ -285,7 +285,7 @@ export const mockVideos: ShelfVideoProps[] = [
     thumbnails: {
       default: {
         height: 50,
-        url: 'https://i.ytimg.com/an_webp/PFi9UAO6ENc/mqdefault_6s.webp?du=3000&sqp=CLGGgJ8G&rs=AOn4CLD8qV1fvwrFZydoui1tBgGyXfkPyQ',
+        url: 'https://i.ytimg.com/an_webp/PFi9UAO6ENc/mqdefault_6s.webp?du=3000&sqp=CKLpqp8G&rs=AOn4CLBylbCKNaNUSC_87vmq2w5XUb-ZpQ',
         width: 50,
       }
     }

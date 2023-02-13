@@ -39,7 +39,7 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
         href={`/video/${video.videoId}?channelId=${video.channelId}`}
         className="flex space-y-2 space-x-2 row h-[160px] hover:bg-gray-100 dark:hover:bg-[#202020] transition-all cursor-pointer"
       >
-        <Image 
+        <Image
           src={{
             src: video.thumbnails.default.url,
             width: video.thumbnails.default.width,

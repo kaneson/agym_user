@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ["github.com", "i.ytimg.com", "youtu.be", "ca.slack-edge.com"],
+    formats: ['image/avif', 'image/webp'],
+  },
 }
 
 module.exports = {
@@ -18,9 +22,7 @@ module.exports = {
   },
 };
 
+const withImages = require('next-images')
+module.exports = withImages();
+
 module.exports = nextConfig;
-module.exports = {
-  images: {
-    domains: ["res.cloudinary.com", "image/webp", "github.com", "i.ytimg.com", "youtu.be", "ca.slack-edge.com"],
-  }
-}
