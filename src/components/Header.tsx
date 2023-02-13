@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import '@speechly/speech-recognition-polyfill'
 import 'regenerator-runtime'
@@ -9,8 +9,6 @@ import {
   MenuOutline,
   SearchOutline,
   MicrophoneOutline,
-  ViewGridOutline,
-  DotsVerticalOutline,
   CalendarOutline,
   LogoutOutline,
   UserCircleOutline,
@@ -19,9 +17,10 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Switcher from './Switcher';
+import Switcher from './Switcher'
 
 import { motion } from 'framer-motion'
+import Moment from 'react-moment'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
@@ -51,6 +50,8 @@ const Header: React.FC<HeaderProps> = ({
 
   //   console.log(listening, transcript);
   // }
+
+  const [todayDate, setTodayDate] = useState(Date());
 
   return (
     <header
@@ -191,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className='lg:flex hidden lg:visible justify-between items-center space-x-5 border-l-2 border-l-yellow-400'>
         <div className='flex flex-wrap mx-4'>
           <p className='text-md dark:text-white'>
-            June, 08, 2023
+            <Moment date={todayDate} format="LL"/>
           </p>
         </div>
 

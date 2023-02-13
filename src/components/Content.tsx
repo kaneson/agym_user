@@ -3,9 +3,10 @@ import React, { lazy, useEffect, useState } from 'react'
 import axios from 'axios';
 
 const ContentVideos = lazy(() => import('./ContentVideos'));
+
 import FiltersTop from './FiltersTop'
-import { mockVideos } from '../utils/mockVideos';
-import MenuFilterTop from './MenuFilterTop';
+
+import { mockVideos } from '../utils/mockVideos'
 
 export interface ShelfVideoProps {
   kind?: string; 
