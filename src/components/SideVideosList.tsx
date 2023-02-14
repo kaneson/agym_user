@@ -15,7 +15,6 @@ interface SideVideosListProps {
 
 const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
   const [useLoading, setUseLaoding] = useState(true);
-  useEffect(() => { console.log(video,'side videos')},[video]);
   useEffect(() => {
     setTimeout(() => {
       setUseLaoding(false);
@@ -63,11 +62,6 @@ const SideVideosList:FC<SideVideosListProps> = ({ video }) => {
           <p className='font-ligth text-sm dark:text-gray-100 md:text-lg lg:text-sm'>
             27 mil visualizaçoes . há 23 horas
           </p>
-          {/* <div className='flex items-center justify-center w-[60px] bg-gray-300 dark:bg-[#252525] lg:p-1 rounded-xl'>
-            <span className='text-center md:text-lg lg:text-[10px] font-medium text-[#121212] dark:text-[#F9F9F9]'>
-              Novo!
-            </span>
-          </div> */}
         </div>
       </Link>
     </>

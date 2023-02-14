@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from 'next/link'
 
-import Moment from "react-moment";
-
 import Skeleton from "react-loading-skeleton";
 
 import { ShelfVideoProps } from "./Content";
@@ -22,17 +20,6 @@ const Video = ({
 } : ShelfVideoProps) => {
   
   const [useLoading, setUseLoading] = useState(true);
-  const [useViewsFormat, setUseViewsFormat] = useState("");
-
-  // useEffect(() => {
-  //   if(views) {
-  //     views > 1000 && views < 10000000 
-  //       ? setUseViewsFormat(`${Math.round(views/1000).toString()}k` )
-  //       : views > 10000000 
-  //       ? setUseViewsFormat(`${Math.round(views/10000000).toString}mil`) 
-  //       : setUseViewsFormat(views.toString())
-  //   }
-  // },[views]);
 
   useEffect(() => {
     if(!channelId) {

@@ -6,10 +6,11 @@ import {
   HomeOutline, 
   PlayOutline, 
   VideoCameraOutline 
-} from 'heroicons-react';
+} from 'heroicons-react'
 
-import { motion } from'framer-motion';
-import Link from 'next/link';
+import { motion } from'framer-motion'
+
+import { container, item } from '../constants/filtersTopResponsive'
 
 const Sidebar:React.FC<any> = ({ handleShow }) => {
   interface SideBarProps {
@@ -26,26 +27,6 @@ const Sidebar:React.FC<any> = ({ handleShow }) => {
     { title: 'History', icon: <GlobeOutline className='h-6' /> }
   ];
 
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1
-      }
-    }
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
   return (
     <motion.div
       variants={container}
@@ -55,19 +36,17 @@ const Sidebar:React.FC<any> = ({ handleShow }) => {
       className='w-[5%] h-[100vh] flex flex-col items-center bg-[#5524d9] text-[#f9f9f9] transition-all'
     >
       {sidebarItems.map(({ icon, title }, idx) => (
-        // <Link href={`/${title}`}>
-          <motion.div 
-            key={idx}
-            variants={item}
-            onClick={handleShow}
-            className='flex flex-col justify-center cursor-pointer items-center transition-all hover:font-bold hover:text-white w-full h-20'
-          >
-            { icon }
-            <h4 className='text-[10px]'>
-              { title }
-            </h4>
-          </motion.div>
-        // </Link>
+        <motion.div 
+          key={idx}
+          variants={item}
+          onClick={handleShow}
+          className='flex flex-col justify-center cursor-pointer items-center transition-all hover:font-bold hover:text-white w-full h-20'
+        >
+          { icon }
+          <h4 className='text-[10px]'>
+            { title }
+          </h4>
+        </motion.div>
       ))}
     </motion.div>
   )

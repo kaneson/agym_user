@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 
 import '@speechly/speech-recognition-polyfill'
 import 'regenerator-runtime'
@@ -23,6 +23,8 @@ import { motion } from 'framer-motion'
 import Moment from 'react-moment'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import { AuthGoogleContext } from '../context/authGoogle';
+import { useRouter } from 'next/router';
 
 interface HeaderProps {
   setShow: (value: any) => any;
@@ -51,13 +53,25 @@ const Header: React.FC<HeaderProps> = ({
   //   console.log(listening, transcript);
   // }
 
-  const [todayDate, setTodayDate] = useState(Date.now());
+  const [todayDate] = useState(Date.now());
+  const { signed, user, singoutGoogle, signInGoogle }:any = useContext(AuthGoogleContext);
+
+  const [loggedUser, setLoggedUser] = useState<any | null>(null);
+
+  useEffect(() => {
+    if(signed && user) {
+      setLoggedUser(user);
+    }
+  },[user, signed]);
+
+  const loginGoogle = async () => {
+    await signInGoogle();
+  }
 
   return (
     <header
       className='flex-1 flex xl:mx-40 lg:mx-30 md:mx-20 flex-wrap md:flex-wrap space-y-4 min-w-[150px] space-x-2 sm:justify-between justify-center items-center py-8'
     >
-  
       <div className='mx-3 flex cursor-pointer items-center'>
         {/* <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -199,21 +213,39 @@ const Header: React.FC<HeaderProps> = ({
         <button>
           <CalendarOutline size={30} color="gray" className='hover:text-[#5524d9] transition-all' />
         </button>
-        <button>
-          <LogoutOutline size={30} color="gray" className='hover:text-[#5524d9] transition-all' />
-        </button>
+        {signed && (
+          <button onClick={singoutGoogle}>
+            <LogoutOutline 
+              size={30} 
+              color="gray" 
+              className='hover:text-[#5524d9] transition-all' 
+            />
+          </button>
+        )}
       </div>
       
       <div className='lg:flex hidden cursor-pointer lg:visible justify-between space-x-2 items-center pl-4 border-l-2 border-l-gray-300'>
-        <p className='font-semibold text-md text-[#909090] hover:text-[#5524d9]'>
-          Thiago Costa
-        </p>
-        <Image 
-          src={{ src:"https://ca.slack-edge.com/T02G05R726R-U02GFQN1MCH-8694f2745211-512", width: 40, height: 40 }}
-          alt="image"
-          className="rounded-full w-[25%] h-[100%]" 
-        />
-        {/* <UserCircleOutline size={42} color={"gray"} className="hover:text-[#5524d9] transition-all" /> */}
+        {signed ? (
+          <Fragment>
+            <p className='font-semibold text-md text-[#909090] hover:text-[#5524d9]'>
+              { loggedUser?.displayName }
+            </p>
+            <Image 
+              src={{ src: user?.photoURL , width: 40, height: 40 }}
+              alt="image"
+              className="rounded-full w-[25%] h-[100%]" 
+            />
+          </Fragment>
+        ) : (
+          <button 
+            className='bg-violet-700 text-white font-medim text-md text-center px-4 py-2 rounded-3xl'
+            onClick={
+              loginGoogle
+            }
+          >
+            Signin
+          </button>
+        )}
       </div>
 
     </header>

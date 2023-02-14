@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from 'react'
+import React, { lazy, useEffect, useReducer, useState } from 'react'
 
 import axios from 'axios';
 
@@ -69,12 +69,31 @@ interface ContentProps {
   search: string;
 }
 
+
+const initialState = {
+  videos: []
+}
+
+const reducer = (action:any, payload:any) => {
+  switch(action.type) {
+    case 'SETVIDEOS':
+      action.videos = payload?.map((i:any) => i);
+    break;
+    default:
+    return { 
+      ...action 
+    }
+  }
+}
+
+const API = 'AIzaSyAWnSk8uTxl2n8PUZ0dOUELLhFwcOF9l5k';
+const channelId = 'UCvphc_K3Cd0YFTygQsvKUEQ';
+
 const Content:React.FC<ContentProps> = ({ search }) => {
   const [useShelfVideos, setUseShelfVideos] = useState<any[]>([]);
   const [useVideos] = useState<ShelfVideoProps[]>(mockVideos);
-  
-    const API = 'AIzaSyAWnSk8uTxl2n8PUZ0dOUELLhFwcOF9l5k';
-    const channelId = 'UCvphc_K3Cd0YFTygQsvKUEQ';
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     // aurelioalfieri
@@ -120,9 +139,14 @@ const Content:React.FC<ContentProps> = ({ search }) => {
     }).catch(function (error) {
       console.error(error.message);
     });
-  },[])
+
+    dispatch({ type: 'SETVIDEOS', payload: mockVideos })
+  },[]);
+
+  console.log(state,'reducer state');
 
   const [useFilterVideo, setUseFilterVideos] = useState("");
+
 
   return (
     <div className='flex-1 flex-col'>

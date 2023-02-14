@@ -1,13 +1,25 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 import { Header, Main } from '../components'
+import { AuthGoogleContext } from '../context/authGoogle'
 
-const Home: NextPage = () => {  
+const Home = () => {  
+  const router = useRouter();
+
   const [useShowToggleMenu, setUseShowToggleMenu] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
+  const { signed, user }:any = useContext(AuthGoogleContext);
+  
+  useEffect(() => {
+    if(!signed) {
+      router.push("/");
+    }
+  },[user, signed]);
  
   return (
     <div>
