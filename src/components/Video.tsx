@@ -62,7 +62,7 @@ const Video = ({
       variants={container}
       initial="hidden"
       animate="visible"
-      className="bg-gray-100 dark:bg-[#202020] rounded-lg flex flex-col h-full items-center shadow-lg"
+      className="bg-[#F9F9F9] dark:bg-[#202020] rounded-lg flex flex-col h-full items-center shadow-lg"
     >
       <Link href={`/video/${videoId}?channelId=${channelId}`} className="w-full">
         <Image
