@@ -130,6 +130,11 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
               back
             </p>
           </button>
+          <div className="flex text-center">
+            <h3 className="text-xl font-bold hidden sm:visible  uppercase text-violet-800">
+              Categoria name
+            </h3>
+          </div>
           <button className="flex space-x-2 row items-center rounded-xl">
             <p>
               Ordenar por: 
