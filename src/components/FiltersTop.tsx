@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react"
 import { motion } from "framer-motion";
 
 import HorizontalScroll from "react-scroll-horizontal";
-import { ArrowLeft, ArrowRight } from "heroicons-react";
+import { ArrowLeft, ArrowRight, FilterOutline } from "heroicons-react";
 
 interface FilterTopProps {
   setFilter: (title: string) => void;
@@ -57,6 +57,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
   }
 
   return (
+    <div>
     <div className="flex bg-[#eff0f4] dark:bg-[#202020] items-start">
       <div 
         className="p-2 h-[50px] relative z-10 xl:left-20 lg:left-10 left-1 top-[2rem] " 
@@ -86,7 +87,7 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
               onClick={() =>
                 title === 'Todos' 
                 ? (
-                  setFilter(""), 
+                  setFilter("All"), 
                   handleActiveFilter(title) 
                 ) : ( 
                   setFilter(title),
@@ -111,8 +112,37 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
           <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clipRule="evenodd" />
         </svg>
       </div>
-
     </div>
+
+    
+    {
+      filter !== "" && (
+        <div className="flex row space-x-4 items-center justify-around p-4">
+          <button
+            onClick={() => {
+              setFilter("")
+              handleActiveFilter("")
+            }} 
+            className="flex space-x-2 border-2 border-[#643ADC] row px-2 py-1 rounded-xl hover:bg-gray-100 transition-all shadow-lg"
+          >
+            <ArrowLeft color="#643ADC" />
+            <p className="text-[#643ADC] font-medium">
+              back
+            </p>
+          </button>
+          <button className="flex space-x-2 row items-center rounded-xl">
+            <p>
+              Ordenar por: 
+            </p>
+            <select name="" id="" className="bg-white p-2">
+              <option value="" className="p-1">Mais recente</option>
+            </select>
+          </button>
+        </div>
+      )
+    }
+
+  </div>
   )
 }
 

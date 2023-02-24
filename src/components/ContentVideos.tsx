@@ -39,50 +39,54 @@ const ContentVideos: React.FC<VideosProps> = ({ videos, filter = "", search = ""
   };
 
   return (
-    <div className="py-4 px-6"> 
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="container grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap bg-transparent"
-      >
-        {(
-          videos.map(({ 
-            channelId,
-            channelTitle,
-            description,
-            liveBroadcastContent,
-            publishTime,
-            publishedAt,
-            thumbnails,
-            title,
-            kind,
-            videoId
-        }, idx) => 
-          title.toLowerCase().includes(search.toLocaleLowerCase().trim()) && title.toLocaleLowerCase().includes(filter.toLocaleLowerCase())  
-          && (
-            <motion.div
-              key={idx} 
-              className="item" 
-              variants={item}
-            >
-              <Video 
-                key={idx}
-                kind={kind}
-                videoId={videoId}
-                channelId={channelId}
-                channelTitle={channelTitle}
-                description={description}
-                liveBroadcastContent={liveBroadcastContent}
-                publishTime={publishTime}
-                publishedAt={publishedAt}
-                thumbnails={thumbnails}
-                title={title}
-              />
-            </motion.div>
-          ))
-        )}
-      </motion.div>
+    <div className="flex-col py-4 px-6">
+      {filter !== "" && (
+        <>
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="container grid justify-center gap-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap bg-transparent"
+          >
+            {(
+              videos.map(({ 
+                channelId,
+                channelTitle,
+                description,
+                liveBroadcastContent,
+                publishTime,
+                publishedAt,
+                thumbnails,
+                title,
+                kind,
+                videoId
+            }, idx) =>
+              title.toLowerCase().includes(search.toLocaleLowerCase().trim()) && title.toLocaleLowerCase().includes(filter === 'All' ? "" : filter.toLocaleLowerCase())  
+              && (
+                <motion.div
+                  key={idx} 
+                  className="item" 
+                  variants={item}
+                >
+                  <Video 
+                    key={idx}
+                    kind={kind}
+                    videoId={videoId}
+                    channelId={channelId}
+                    channelTitle={channelTitle}
+                    description={description}
+                    liveBroadcastContent={liveBroadcastContent}
+                    publishTime={publishTime}
+                    publishedAt={publishedAt}
+                    thumbnails={thumbnails}
+                    title={title}
+                  />
+                </motion.div>
+              ))
+            )}
+          </motion.div>
+        </>
+      )}
     </div>
   )
 }

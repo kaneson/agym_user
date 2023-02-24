@@ -140,13 +140,15 @@ const Content:React.FC<ContentProps> = ({ search }) => {
       console.error(error.message);
     });
 
-    dispatch({ type: 'SETVIDEOS', payload: mockVideos })
+    dispatch({ 
+      type: 'SETVIDEOS', 
+      payload: mockVideos 
+    });
   },[]);
 
   console.log(state,'reducer state');
 
   const [useFilterVideo, setUseFilterVideos] = useState("");
-
 
   return (
     <div className='flex-1 flex-col'>

@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react"
 
+import { motion } from 'framer-motion'
+
+import { useRouter } from 'next/router'
+
 import Image from "next/image"
 import Link from 'next/link'
 
-import Skeleton from "react-loading-skeleton";
+import { container, item  } from "../constants/filtersTopResponsive"
 
-import { ShelfVideoProps } from "./Content";
+import Skeleton from "react-loading-skeleton"
+
+import { ShelfVideoProps } from "./Content"
+import { ChartBarOutline, ClockOutline } from "heroicons-react"
 
 const Video = ({ 
   channelId,
@@ -32,6 +39,8 @@ const Video = ({
     }
   },[channelId]);
 
+  const router = useRouter();
+
   if(useLoading) {
     return (
       <div className="flex-col w-full">
@@ -49,8 +58,13 @@ const Video = ({
   }
 
   return (
-    <div className="bg-gray-200 dark:bg-[#202020] rounded-lg mb-5 flex flex-col shadow-lg">
-      <Link href={`/video/${videoId}?channelId=${channelId}`}>
+    <motion.div 
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="bg-gray-100 dark:bg-[#202020] rounded-lg flex flex-col h-full items-center shadow-lg"
+    >
+      <Link href={`/video/${videoId}?channelId=${channelId}`} className="w-full">
         <Image
           alt="thumbnail" 
           src={{ 
@@ -58,39 +72,46 @@ const Video = ({
             width: thumbnails.default.width, 
             height: thumbnails.default.height 
           }}
-          className="rounded-t-xl w-full h-full transition-all hover:scale-[1.03] hover:rounded-lg mb-1 shadow-md" 
+          className="rounded-t-lg w-full h-full transition-all hover:scale-[1.03] hover:rounded-lg shadow-md" 
         />
       </Link>
-      <div className="flex justify-around p-1 mt-2" style={{ maxHeight: 150, minHeight: 135 }}>
-        <Image 
-          src={{ 
-            src:"https://ca.slack-edge.com/T02G05R726R-U02GFQN1MCH-8694f2745211-512", 
-            width: 40,
-            height: 40 
-          }}
-          alt="image"
-          className="rounded-full w-[11%] h-[100%]" 
-        />
-        <div className="w-[80%] flex-col text-sm font-bold">
-          <h3 className="text-sm text-[#121212] dark:text-[#F9F9F9]">
+
+      <div className="flex h-full items-center justify-between">
+        <div className="w-full px-4 flex-col text-sm font-bold">
+          <h3 className="text-sm mt-2 text-[#121212] mb-8 dark:text-[#F9F9F9]">
             { title }
           </h3>
-          <h3 className="text-[12px] text-gray-500">
-            { channelTitle }
-          </h3>
-          <h3 className="flex text-[12px] text-gray-600">
-            Categoria: Perna
-          </h3>
-          <h3 className="flex text-[12px] text-gray-600">
-            Duração: 5 min
-          </h3>
-          
-          {/* <h3 className="flex text-[12px] text-gray-600">
-            { useViewsFormat }{' '} publicado - <Moment format="YYYY/MM/DD" date={publishTime} />
-          </h3> */}
+
+          <div className="flex-col flex my-1">
+            <div className="flex justify-between items-center">
+              <div className="flex-col space-y-2">
+                <motion.div variants={item} className="flex space-x-2 items-center">
+                  <ChartBarOutline />
+                  <h3 className="font-medium">
+                    Baixa
+                  </h3>
+                </motion.div>
+                <motion.div variants={item} className="flex items-center space-x-2">
+                  <ClockOutline />
+                  <h3 className="text-[12px] text-gray-600">
+                    5 min
+                  </h3>
+                </motion.div>
+              </div>
+              <motion.button
+                variants={item}
+                onClick={() => 
+                  router.push(`/video/${videoId}?channelId=${channelId}`)
+                } 
+                className="bg-violet-800 shadow-lg hover:bg-violet-700 px-8 text-gray-100 rounded-md p-1"
+              >
+                iniciar
+              </motion.button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
