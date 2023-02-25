@@ -45,7 +45,7 @@ const Video = ({
     return (
       <div className="flex-col w-full">
         <Skeleton 
-          width={350} 
+          width={320} 
           height={200} 
           containerClassName="w-full h-full rounded-2xl" 
         />

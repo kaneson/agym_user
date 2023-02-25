@@ -2,7 +2,9 @@ import React, { lazy, useEffect, useReducer, useState } from 'react'
 
 import axios from 'axios';
 
-const ContentVideos = lazy(() => import('./ContentVideos'));
+const ContentVideos = lazy(() => import('./ContentVideos'))
+
+import { motion } from 'framer-motion'
 
 import FiltersTop from './FiltersTop'
 
@@ -151,7 +153,7 @@ const Content:React.FC<ContentProps> = ({ search }) => {
   const [useFilterVideo, setUseFilterVideos] = useState("");
 
   return (
-    <div className='flex-1 flex-col'>
+    <div className='flex-1 w-full flex-col'>
       <FiltersTop 
         setFilter={setUseFilterVideos} 
         filter={useFilterVideo}
