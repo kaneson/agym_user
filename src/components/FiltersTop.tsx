@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 import { motion } from "framer-motion";
 
@@ -9,9 +9,21 @@ interface FilterTopProps {
   setFilter: (title: string) => void;
   filter?: string;
 }
-import { container, item, filtersTop  } from "../constants/filtersTopResponsive";
 
-const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
+import { container, item, filtersTop  } from "../constants/filtersTopResponsive"
+
+import { GetServerSideProps } from "next"
+
+import axios from "axios"
+
+const controller = new AbortController()
+    
+
+const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }, props ) => {
+
+  if(props) {
+    console.log(props,'props');
+  }
 
   const activeRef: any = useRef();
   const [active] = useState<any> ([
@@ -55,6 +67,38 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
       behavior: 'smooth'
     });
   }
+
+  const handleFetchCategories = async () => {
+    const instance = axios.create({
+      baseURL: 'https://agym.desenvolvimento.mobigap.com.br/api/app/categories/?user_id=1',
+      timeout: 1000,
+      headers: {'X-Custom-Header': 'foobar'}
+    });
+
+    const data:any = await instance.get('https://agym.desenvolvimento.mobigap.com.br/api/app/categories/?user_id=1', 
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          'Content-Type': null
+        }
+      }
+      // { 
+      //   signal: controller.signal 
+      // }
+      ).then((event) => 
+      console.log(event,'responsee')
+    ).catch(
+      (error) => console.log(error.message)
+    ).finally(() => {
+      // controller.abort();
+    });
+
+    console.log({ data },'data');
+  };
+
+  useEffect(() => {
+    handleFetchCategories();
+  },[filter]);
 
   return (
     <div>
@@ -114,42 +158,69 @@ const FiltersTop: React.FC<FilterTopProps> = ({ setFilter, filter }) => {
         </div>
       </div>
       
-      <div>
+      <motion.div            
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
         {
           filter !== "" && (
             <div className="flex row space-x-4 items-center justify-around p-4">
-              <button
+              <motion.button
+                variants={item}
                 onClick={() => {
                   setFilter("")
                   handleActiveFilter("")
                 }} 
-                className="flex space-x-2 border-2 border-[#643ADC] row px-2 py-1 rounded-xl hover:bg-gray-100 transition-all shadow-lg"
+                className="flex space-x-2 border-2 border-[#643ADC] row px-2 py-1 rounded-xl hover:bg-gray-100 dark:hover:bg-[#202020] transition-all shadow-lg"
               >
                 <ArrowLeft color="#643ADC" />
                 <p className="text-[#643ADC] font-medium">
                   back
                 </p>
-              </button>
+              </motion.button>
               <div className="flex text-center">
                 <h3 className="text-xl font-bold hidden sm:visible  uppercase text-violet-800">
                   Categoria name
                 </h3>
               </div>
-              <button className="flex space-x-2 row items-center rounded-xl">
-                <p>
-                  Ordenar por: 
-                </p>
-                <select name="" id="" className="bg-white p-2">
+              <motion.div 
+                className="flex row space-x-2 items-center"
+                variants={item}
+              >
+                <button className="flex space-x-2 row items-center rounded-xl">
+                  <p className="dark:text-white">
+                    Ordenar por: 
+                  </p>
+                </button>
+                <select name="" id="" className="bg-white p-2 rounded-lg cursor-pointer">
                   <option value="" className="p-1">Mais recente</option>
+                  <option value="" className="p-1">Mais Visto</option>
                 </select>
-              </button>
+              </motion.div>
             </div>
           )
         }
-      </div>
+      </motion.div>
 
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const data:any = await axios.get('https://agym.desenvolvimento.mobigap.com.br/api/app/categories/?user_id=1')
+    .then((event) => console.log(event.data,'responsee'))
+    .catch((error) => console.log(error.message));
+
+  if(!data) {
+    return {
+      notFound: true
+    }
+  }
+
+  return  {
+    props: { data }
+  }
 }
 
 export default FiltersTop;

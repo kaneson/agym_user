@@ -44,11 +44,13 @@ const Video = ({
   if(useLoading) {
     return (
       <div className="flex-col w-full">
-        <Skeleton 
-          width={320} 
-          height={200} 
-          containerClassName="w-full h-full rounded-2xl" 
-        />
+        <div className="container grid justify-center gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap">
+          <Skeleton 
+            width={320} 
+            height={200} 
+            containerClassName="w-full h-full m-2 rounded-2xl" 
+          />
+        </div>
         <div className="flex row my-2 space-x-2">
           <Skeleton width={26} height={26} circle />
           <Skeleton count={3} width={200} height={15} />
@@ -86,14 +88,14 @@ const Video = ({
             <div className="flex justify-between items-center">
               <div className="flex-col space-y-2">
                 <motion.div variants={item} className="flex space-x-2 items-center">
-                  <ChartBarOutline />
-                  <h3 className="font-medium">
+                  <ChartBarOutline className="dark:text-white" />
+                  <h3 className="font-medium dark:text-white">
                     Baixa
                   </h3>
                 </motion.div>
                 <motion.div variants={item} className="flex items-center space-x-2">
-                  <ClockOutline />
-                  <h3 className="text-[12px] text-gray-600">
+                  <ClockOutline className="dark:text-white" />
+                  <h3 className="text-[12px] text-gray-600 dark:text-white">
                     5 min
                   </h3>
                 </motion.div>
