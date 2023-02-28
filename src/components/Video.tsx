@@ -46,9 +46,9 @@ const Video = ({
       <div className="flex-col w-full">
         <div className="container grid justify-center gap-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 flex-wrap">
           <Skeleton 
-            width={320} 
+            width={250} 
             height={200} 
-            containerClassName="w-full h-full m-2 rounded-2xl" 
+            containerClassName="w-full h-full rounded-2xl" 
           />
         </div>
         <div className="flex row my-2 space-x-2">
